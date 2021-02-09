@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
+    <title>Biblia</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="assets/bootstrap.min.css">
+  </head>
+  <body>
+
+    <div id="mySidenav" class="sidenav">
+      <span href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</span>
+      <div class="btnMain-body">
+        <div class="btn-body">
+            <div class="btn"></div>
+        </div>
+        <label for="ck">🌞</label>
+        <input type="checkbox" name="" id="ck">
+    </div>
+    </div>
+<div id="main">
+  <nav class="nav nav-pills nav-stacked">
+    <img src="icons/menu-button.png" alt="" srcset="" id="menu-icon" onclick="openNav()">
+    <a class="nav-link" href="#">
+      <select name="vitabu" id="vitabu">
+      </select>
+    </a>
+    <a class="nav-link" href="#">
+      <label for="sura"> Sura</label>
+      <select name="sura" id="sura">
+      </select>
+    </a>
+    <a class="nav-link" href="#">
+      <label for="agano"> Agano</label>
+      <select name="agano" id="agano">
+        <option value="O">Agano la Kale</option>
+        <option value="N">Agano Jipya</option>
+      </select>
+    </a>
+    <!-- <a class="nav-link" href="#">Disabled link</a> -->
+  </nav>
+<div class="container">
+<section id="bible-content"></section>
+<textarea name="" id="" cols="70" rows="20"></textarea>
+</div>
+
+</div>
+    <!-- javascripts -->
+    <script src="./renderer.js"></script>
+    <script src="assets/animated.js"></script>
+    <!-- <script src="assets/jquery.min.js"></script> -->
+  </body>
+</html>
