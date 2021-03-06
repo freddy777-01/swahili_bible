@@ -1,5 +1,9 @@
 const preload = require('./preload.js')
 let kitabu;
+/* 
+    >> Agano la kale 1-< 40
+    >> Agano jipya 40-66
+    */
 const bible = exports.bible = {
     bibleCont:()=>{
         return preload.bibleCont();
@@ -45,32 +49,43 @@ const bible = exports.bible = {
     // console.log(kitabuTemp);
     return suraAr
     },
-    testaments:(ts)=>{
-    /* 
-    >> Agano la kale 1-< 40
-    >> Agano jipya 40-66
-    */
-        // let bibleCont = bible.bibleCont().toString().split('\n')
+    oldTestament:()=>{
         let tempNum=[]
         
        bible.bibleCols().forEach(el => {
            tempNum.push(el[0])
     });
-    
-    
+
     let tempTesta=[]
-    tempTesta.splice(0,tempTesta.length)
     tempNum.forEach(el => {
         // col_1.push(el[2])
-        if (el[2] === ts) {
+        if (el[2] === 'O') {
             tempTesta.push(el)
         }
     });
     // creating unique first colmn numbers
-    let testa=[]
-    testa.splice(0,testa.length)
-    testa = tempTesta.filter((value,index)=> tempTesta.indexOf(value) === index)
-    return testa
+    let oldTesta=[]
+    oldTesta = tempTesta.filter((value,index)=> tempTesta.indexOf(value) === index)
+    return oldTesta
+    },
+    newTestament:()=>{
+        let tempNum=[]
+        
+       bible.bibleCols().forEach(el => {
+           tempNum.push(el[0])
+    });
+
+    let tempTesta=[]
+    tempNum.forEach(el => {
+        // col_1.push(el[2])
+        if (el[2] === 'N') {
+            tempTesta.push(el)
+        }
+    });
+    // creating unique first colmn numbers
+    let newTesta=[]
+    newTesta = tempTesta.filter((value,index)=> tempTesta.indexOf(value) === index)
+    return newTesta
     },
     bibleVerses:(kt,suraNum)=>{
         let verses =[]
@@ -87,3 +102,29 @@ const bible = exports.bible = {
         return verses
     }
 };
+
+/*
+>>THIS IS A DELETED CODE FOR AUTOMATIC TESTAMENT QUERY 
+testaments:(ts)=>{
+    
+        // let bibleCont = bible.bibleCont().toString().split('\n')
+        let tempNum=[]
+        
+       bible.bibleCols().forEach(el => {
+           tempNum.push(el[0])
+    });
+    
+    
+    let tempTesta=[]
+    tempTesta.splice(0,tempTesta.length)
+    tempNum.forEach(el => {
+        // col_1.push(el[2])
+        if (el[2] === ts) {
+            tempTesta.push(el)
+        }
+    });
+    let testa=[]
+    testa.splice(0,testa.length)
+    testa = tempTesta.filter((value,index)=> tempTesta.indexOf(value) === index)
+    return testa
+    }, */

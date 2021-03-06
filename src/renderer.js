@@ -47,12 +47,8 @@ const booksByAgano = (an)=>{
        });
    });
 }
-booksByAgano(bible.bible.testaments(agano.value))
-agano.addEventListener('change',(e)=>{
-    booksByAgano(bible.bible.testaments(e.target.value))
-    tafutaSura(vitabu.value)
-})
 
+booksByAgano(bible.bible.oldTestament()) /* this displays bible verses by default */
 // let currentKitabuSura = vitabu.value
 const tafutaSura = (kt)=>{
     let suraAr= bible.bible.tafutaSura(kt)
@@ -69,6 +65,7 @@ suraAr.forEach(el => {
     // console.log(kitabuTemp);
     bibleVerses(vitabu.value,sura.value)
 }
+
 tafutaSura(vitabu.value);
 vitabu.addEventListener('change',(e)=>{
     if (sura.innerHTML!="") {
@@ -78,11 +75,15 @@ vitabu.addEventListener('change',(e)=>{
     tafutaSura(e.target.value);
     // sura.innerHTML="<option>Empty</option>"
 })
-// console.log(vitabu.value);
-//  console.log(sura.value)
-//  console.log(bible.bible.bibleVerses(vitabu.value,sura.value))
 
+/* SELECTING BOOKS USING AGANO */
+// booksByAgano(bible.bible.testaments(agano.value))
 
+agano.addEventListener('change',(e)=>{
+    if(e.target.value === 'N')  booksByAgano(bible.bible.newTestament())
+    else booksByAgano(bible.bible.oldTestament())
+    tafutaSura(vitabu.value)
+})
 
 
 bibleVerses(vitabu.value,sura.value)

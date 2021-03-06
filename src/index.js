@@ -1,6 +1,8 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const fs = require('fs');
+// import * as splashScreen from "@trodi/electron-splashscreen";
+// const splashScreen = require('@trodi/electron-splashscreen')
 
 require('electron-reload')(__dirname,{
   electron:path.join('../','node_modules','.bin','electron')
@@ -11,31 +13,53 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
   app.quit();
 }
 
-const createWindow = () => {
+
+app.on('ready',() => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    show: false,
     webPreferences:{
+    	scrollBounce:true,
       nodeIntegration:true,
       // enableRemoteModule:true,
       preload:path.join(__dirname,'preload.js')
     }
   });
 
-  let webCont = mainWindow.webContents;
+   // creating a splash window
+   const splashScreen =new BrowserWindow({
+     width: 610, 
+     height: 310, 
+     transparent: true, 
+     frame: false, 
+     alwaysOnTop: true
+    });
+   splashScreen.loadFile(path.join(__dirname,'splash-screen.html'));
+ 
+  // const main = mainWindow = splashScreen.initSplashScreen(config) 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
   
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();
 
-};
+  // if main window is ready to show, then destroy the splash window and show up the main window
+  mainWindow.once('ready-to-show', () => {
+    setTimeout(() => {
+    splashScreen.destroy();
+    mainWindow.show();
+  }, 4000);
+  });
+
+});
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready',createWindow);
+// app.on('ready',createWindow);
+
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
