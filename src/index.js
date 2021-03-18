@@ -13,6 +13,12 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
   app.quit();
 }
 
+// icont for the App
+let icoPath = path.join(__dirname,'icons/swahili_bible.ico')
+const getIcon =()=>{
+  if(process.platform = 'win32') return path.join(__dirname,'icons/swahili_bible.ico')
+  return path.join(__dirname,'icons/swahili_bible.png')
+}
 
 app.on('ready',() => {
   // Create the browser window.
@@ -20,6 +26,7 @@ app.on('ready',() => {
     width: 800,
     height: 600,
     show: false,
+    icon:getIcon(),
     webPreferences:{
     	scrollBounce:true,
       nodeIntegration:true,
@@ -34,7 +41,8 @@ app.on('ready',() => {
      height: 310, 
      transparent: true, 
      frame: false, 
-     alwaysOnTop: true
+     alwaysOnTop: true,
+     icon:getIcon(),
     });
    splashScreen.loadFile(path.join(__dirname,'splash-screen.html'));
  
@@ -48,9 +56,9 @@ app.on('ready',() => {
   // if main window is ready to show, then destroy the splash window and show up the main window
   mainWindow.once('ready-to-show', () => {
     setTimeout(() => {
-    splashScreen.destroy();
+      splashScreen.destroy();
+    }, 5000);
     mainWindow.show();
-  }, 4000);
   });
 
 });

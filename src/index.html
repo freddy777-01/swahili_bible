@@ -6,6 +6,7 @@
     <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
     <title>Biblia</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="assets/fontawesome/all.min.js">
     <link rel="stylesheet" href="assets/bootstrap.min.css">
   </head>
   <body>
@@ -15,15 +16,19 @@
       <div class="btnMain-body">
         <div class="btn-body">
             <div class="btn"></div>
-        </div>
-        <label for="ck">🌞</label>
-        <input type="checkbox" name="" id="ck">
+          </div>
+          <div>
+            <h5>Night Mode</h5>
+          <label for="ck">🌞</label>
+          <input type="checkbox" name="" id="ck">
+          </div>
     </div>
     </div>
 <div id="main">
 
-  <nav class="nav nav-pills nav-stacked">
-    <img src="icons/menu-button.png" alt="" srcset="" id="menu-icon" onclick="openNav()">
+  <nav class="nav nav-pills fixed-top shadow pl-3 pt-2 pr-3">
+    <i id="menu-icon" class="fa fa-cogs" aria-hidden="true" onclick="openNav()"></i>
+    <!-- <img src="icons/menu-button.png" alt="" srcset="" id="menu-icon" onclick="openNav()"> -->
     <a class="nav-link" href="#">
       <select name="vitabu" id="vitabu">
       </select>
@@ -40,17 +45,45 @@
         <option value="N">Agano Jipya</option>
       </select>
     </a>
+    <a onclick="takeNote()" href="#" class="nav-link" data-toggle="tooltip" data-placement="left" title="Take Note!">
+      <i class="fas fa-edit" id="take-note"></i>
+    </a>
+    <!-- <a href="splash-screen.html">Sample</a> -->
     <!-- <a class="nav-link" href="#">Disabled link</a> -->
   </nav>
-<div class="container">
-<section id="bible-content"></section>
-<textarea name="" id="" cols="70" rows="20"></textarea>
+<div class="container-fluid mt-5">
+    <div class="bible-content-body">
+      <section id="bible-content"></section>
+      
+    </div>
+    <div class="note">
+      <div class="hide">
+      <div class="nav btn-group btn-group-md">
+        <button type="button" class="btn btn-danger" onclick="takeNote()">Close</button>
+        <button type="button" class="btn btn-primary">My Notes</button>
+        <button type="button" class="btn btn-warning">Read Notes</button>
+        
+      </div>
+      <div class="note-body">
+
+        <!-- <textarea name="" id="" cols="70" rows="20"></textarea> -->
+        <textarea name="" id="" cols="20" rows="10" placeholder="Write Notes"></textarea>
+      </div>
+      <div class="note-footer">
+        <div class="btn-group">
+          <button type="button" class="btn btn-success">Save</button>
+        </div>
+      </div>
+    </div>
+    </div>
 </div>
 
 </div>
     <!-- javascripts -->
     <script src="./renderer.js"></script>
     <script src="assets/animated.js"></script>
-    <!-- <script src="assets/jquery.min.js"></script> -->
+    <script src="assets/jquery.min.js"></script>
+    <script src="assets/fontawesome/all.min.js"></script>
+    <script src="assets/bootstrap.min.js"></script>
   </body>
 </html>

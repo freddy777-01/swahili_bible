@@ -52,11 +52,11 @@ booksByAgano(bible.bible.oldTestament()) /* this displays bible verses by defaul
 // let currentKitabuSura = vitabu.value
 const tafutaSura = (kt)=>{
     let suraAr= bible.bible.tafutaSura(kt)
-    txtArea.value =null;
+    // txtArea.value =null;
     sura.innerHTML =""
-suraAr.forEach(el => {
+/* suraAr.forEach(el => {
     txtArea.value += el+'\n'
-});
+}); */
         
         suraAr.forEach(el =>{
             sura.innerHTML +=`<option value="${el}">${el}</option>`;

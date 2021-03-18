@@ -30,6 +30,13 @@ nav select{
   border-radius: 5px;
   cursor: pointer;
 }
+nav #take-note{
+  position: absolute;
+  right: 5px;
+  font-size: 2rem;
+  text-decoration: none;
+  color: #585757;
+}
 
 .verse {
 	font-weight: bold;
@@ -44,9 +51,7 @@ nav select{
   border-radius: 5px;
   /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
-textarea {
-  display: none;
-}
+
 
 /* The sideBar CSS */
 .sidenav {
@@ -134,4 +139,57 @@ textarea {
 
 .btnMain-body input[type=checkbox]{
   display: none;
+}
+.stay-top{
+  position: fixed;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#main .container-fluid{
+  display: flex;
+}
+/* Note Taking Div */
+.note{
+  /* resize: horizontal; */
+  width: 0px;
+  /* width: 800px; */
+  /* border: 2px solid red;s */
+  /* border-left: 3px solid rgb(100, 100, 100); */
+  position: sticky;
+  top: 5rem;
+  border-radius: 5px;
+  /* height: 40rem; */
+  overflow: hidden;
+  /* cursor: w-resize; */
+  padding: 10px;
+  transition: width .3s ease-in-out;
+  /* background-color: #818181; */
+}
+.note .nav{
+  margin: 5px;
+}
+.note .hide{
+  display: none;
+}
+.note textarea {
+  max-width: 50rem;
+  padding: 5px;
+  resize: both;
+  border-radius: 5px;
+}
+::placeholder{
+  color: red;
+  padding: 6px;
+  opacity: 0.8;
+}
+
+/* Medium devices (landscape tablets, 768px and down) */
+@media only screen and (max-width: 780px) {
+  .note{
+    /* width: 200px; */
+    position: fixed;
+    /* overflow: hidden; */
+    top: 4rem;
+    right: 1rem;
+  }
 }

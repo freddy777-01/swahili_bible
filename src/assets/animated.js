@@ -30,10 +30,37 @@ swich.addEventListener('click',(e)=>{
     if (document.querySelector('input[type=checkbox]').checked) {
         document.querySelector('#main').style.backgroundColor ="black"
         document.querySelector('#main').style.color ="white"
-        document.querySelector('#main nav #menu-icon').style.backgroundColor ="white"
+        document.querySelector('#main nav #menu-icon').style.color ="white"
+        document.querySelector('.btnMain-body label').innerHTML ="🌚"
     }else {
         document.querySelector('#main').style.backgroundColor ="white"
         document.querySelector('#main').style.color ="black"
-        document.querySelector('#main nav #menu-icon').style.backgroundColor =""
+        document.querySelector('#main nav #menu-icon').style.color =""
+        document.querySelector('.btnMain-body label').innerHTML ="🌞"
+    }
+})
+document.querySelector('body').addEventListener('scroll',()=>{
+    document.querySelector('nav').className ="stay-top"
+})
+
+// Taking Note Box
+const noteBox = document.querySelector('.note')
+const noteColose = document.querySelector('.note .nav .btn-danger')
+// document.querySelector('.note').style.resize ="horizontal"
+let close = false
+function takeNote(){
+        
+    document.querySelector(".note").style.width="800px"
+    document.querySelector(".note .hide").style.display="block"
+    document.querySelector(".note").style.overflow="visible"
+    
+        close = true
+}
+document.querySelector('.note .nav .btn-danger').addEventListener("click",()=>{
+    if (close) {
+        document.querySelector(".note").style.width="0px"
+        document.querySelector(".note .hide").style.display="none"
+        document.querySelector(".note").style.overflow="hidden"
+        close = false
     }
 })

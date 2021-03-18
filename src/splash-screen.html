@@ -6,11 +6,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Splash</title>
     <link rel="stylesheet" href="assets/bootstrap.min.css">
+    <style>
+        body{
+            /* background-color: rgba(245, 214, 39, 0.692); */
+            text-align: center;
+            overflow: hidden;
+            border-left: 7px solid orangered;
+            border-right:7px solid orangered;
+        }
+        .hd{
+            position: absolute;
+            /* border-radius: 2px; */
+        }
+        .hd h1{
+            font-family: chiller,Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 5rem;
+            line-height: 8rem;
+            color: azure;
+            text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+            /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+        }
+        .bd{
+            height: 23rem;
+            /* overflow: hidden; */
+        }
+        .bd img{
+            width: 100%;
+            height: inherit;
+            /* border: 2px solid black; */
+            margin: 0px auto;
+            /* position: absolute; */
+            /* bottom: 0rem; */
+            right: 12rem;
+            /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+        }
+        .ft{
+            width: 100%;
+            position: fixed;
+            bottom: 0rem;
+            z-index: 0;
+        }
+        .ft .lg{
+           font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            float: right;
+            font-weight: 900;
+            margin: 0rem 2rem 0rem 0rem;
+            padding: 4px;
+            border-radius: 10px;
+            color: rgb(0, 0, 0);
+            /* border: 2px solid red; */
+            background-image: linear-gradient(-180deg, rgba(255, 255, 255, 0.185), rgb(121, 121, 117));
+        }
+        .loader {
+            position: absolute;
+            bottom: 2px;
+            left: 1rem;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 10px solid yellow;
+  border-right: 10px solid green;
+  border-bottom: 10px solid orangered;
+  border-left: 10px solid rgb(88, 87, 87);
+  width: 5rem;
+  height: 5rem;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+    </style>
 </head>
 <body>
-<div class="bg-warning w-100 h-100">
-<h1 class="mx-auto" style="width:100%;height: 100%;">THis is a Splash Screen</h1>
+<div class="hd w-100 h-100">
+<h1 class="mx-auto" style="width:100%;height: 100%;">
+    SWAHILI BIBLE
+</h1>
 </div>
-    
+<div class="bd">
+
+    <img class="" src="icons/bible_cover.png" alt="">
+</div>
+<div class="ft">
+    <div class="loader"></div>
+    <span class="lg">FEMAG</span>
+</div>
+
+ <script src="assets/jquery.min.js"></script>
+<script src="assets/bootstrap.min.js"></script>
 </body>
 </html>
