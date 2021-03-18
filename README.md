@@ -2,4 +2,4 @@
 >>Bible in Swahili language ;  
 >>this app is made of javascript
 
->>Contact: fred45722@gmail.com; Telegram and whatsapp : +255789-925268
+>>Contact: fred45722@gmail.com; Telegram and whatsapp : +255789925268
