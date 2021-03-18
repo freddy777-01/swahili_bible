@@ -1,5 +1,5 @@
 # swahili_bible Desktop App
->>this app is made of Electron js
->>Bible in Swahili language
+>>Bible in Swahili language ;  
+>>this app is made of javascript
 
->>Contact: fred45722@gmail.com; +255758-226770;+255789-925268
+>>Contact: fred45722@gmail.com; Telegram and whatsapp : +255789-925268
