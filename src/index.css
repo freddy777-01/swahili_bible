@@ -123,7 +123,7 @@ nav #take-note{
 .btnMain-body .btn-body .btn{
   width: 24px;
   height: 24px;
-  background-color: white;
+  background-color: #ffffff;
   border-radius: 50%;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.25);
   border: 1px solid gray;
@@ -151,14 +151,15 @@ nav #take-note{
 /* Note Taking Div */
 .note{
   /* resize: horizontal; */
-  width: 0px;
-  /* width: 800px; */
-  /* border: 2px solid red;s */
+  width: 800px;
+  /* width: 0px; */
+  /* border: 2px solid red; */
   /* border-left: 3px solid rgb(100, 100, 100); */
   position: sticky;
   top: 5rem;
+  right: 2rem;
   border-radius: 5px;
-  /* height: 40rem; */
+  height: 40rem;
   overflow: hidden;
   /* cursor: w-resize; */
   padding: 10px;
@@ -168,11 +169,18 @@ nav #take-note{
 .note .nav{
   margin: 5px;
 }
+.note .nav button{
+  outline: none;
+}
 .note .hide{
+  /* display: none; */
+}
+.note .note-body .panel{
   display: none;
 }
 .note textarea {
-  max-width: 50rem;
+  max-width: 30rem;
+  max-height: 30rem;
   padding: 5px;
   resize: both;
   border-radius: 5px;
@@ -182,14 +190,21 @@ nav #take-note{
   padding: 6px;
   opacity: 0.8;
 }
-
+/* some topography */
+.t-bold{
+  font-weight: 700;
+  font-style: oblique;
+}
+.note .note-body .view-notes .view-notes-body .note-view:hover{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 /* Medium devices (landscape tablets, 768px and down) */
 @media only screen and (max-width: 780px) {
   .note{
     /* width: 200px; */
-    position: fixed;
+    position: sticky;
     /* overflow: hidden; */
-    top: 4rem;
-    right: 1rem;
+    top: 30rem;
+    /* right: 1rem; */
   }
 }

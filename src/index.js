@@ -4,9 +4,9 @@ const fs = require('fs');
 // import * as splashScreen from "@trodi/electron-splashscreen";
 // const splashScreen = require('@trodi/electron-splashscreen')
 
-require('electron-reload')(__dirname,{
+/* require('electron-reload')(__dirname,{
   electron:path.join('../','node_modules','.bin','electron')
-})
+}) */
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
@@ -27,6 +27,9 @@ app.on('ready',() => {
     height: 600,
     show: false,
     icon:getIcon(),
+    minWidth:800,
+    minHeight:600,
+    backgroundColor:'#2e2c29',
     webPreferences:{
     	scrollBounce:true,
       nodeIntegration:true,
@@ -50,6 +53,7 @@ app.on('ready',() => {
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
   
+
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();
 
@@ -62,6 +66,7 @@ app.on('ready',() => {
   });
 
 });
+
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.

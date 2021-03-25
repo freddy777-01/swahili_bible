@@ -7,7 +7,7 @@
     <title>Biblia</title>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="assets/fontawesome/all.min.js">
-    <link rel="stylesheet" href="assets/bootstrap.min.css">
+    <link rel="stylesheet" href="assets//bootstrap/css/bootstrap.min.css">
   </head>
   <body>
 
@@ -45,7 +45,7 @@
         <option value="N">Agano Jipya</option>
       </select>
     </a>
-    <a onclick="takeNote()" href="#" class="nav-link" data-toggle="tooltip" data-placement="left" title="Take Note!">
+    <a onclick="takeNote()" id="takeNote" href="#" class="nav-link" data-toggle="tooltip" data-placement="left" title="Take Note!">
       <i class="fas fa-edit" id="take-note"></i>
     </a>
     <!-- <a href="splash-screen.html">Sample</a> -->
@@ -58,21 +58,36 @@
     </div>
     <div class="note">
       <div class="hide">
-      <div class="nav btn-group btn-group-md">
+      <div class="nav btn-group btn-group-sm">
         <button type="button" class="btn btn-danger" onclick="takeNote()">Close</button>
-        <button type="button" class="btn btn-primary">My Notes</button>
-        <button type="button" class="btn btn-warning">Read Notes</button>
-        
+        <button type="button" class="btn btn-primary" id="my-notes" onclick="showPanel(1)">My Notes</button>
+        <button type="button" class="btn btn-info" id="take-note" onclick="showPanel(0)">Take Notes</button>
+        <button type="button" class="btn btn-warning " id="read-note" onclick="showPanel(2)">Read Note</button>
       </div>
       <div class="note-body">
-
-        <!-- <textarea name="" id="" cols="70" rows="20"></textarea> -->
-        <textarea name="" id="" cols="20" rows="10" placeholder="Write Notes"></textarea>
-      </div>
-      <div class="note-footer">
-        <div class="btn-group">
-          <button type="button" class="btn btn-success">Save</button>
+        <div class="msg t-bold m-2"></div>
+        <div class="panel take-note">
+          <div class="form-group">
+            <label for="">Title</label>
+            <input type="text"
+                class="form-control form-control-sm" name="" id="note-title" aria-describedby="helpId" placeholder="">
+            <small id="helpId" class="form-text text-muted">Enter Title of the Note</small>
+          </div>
+          <!-- <textarea name="" id="" cols="70" rows="20"></textarea> -->
+          <textarea name="" id="note-content" cols="20" rows="10" placeholder="Write Notes"></textarea>
+          <div class="note-footer">
+            <div class="btn-group">
+              <button type="button" class="btn btn-success" id="save-btn">Save</button>
+            </div>
+          </div>
         </div>
+        <div class="panel view-notes">
+          <div class="view-notes-body"></div>
+          <div class="view-notes-footer">
+            <div class="t-bold m-2"></div>
+          </div>
+        </div>
+        <div class="panel read-notes"></div>
       </div>
     </div>
     </div>
@@ -80,10 +95,11 @@
 
 </div>
     <!-- javascripts -->
+    <script src="assets/jquery.min.js"></script>
     <script src="./renderer.js"></script>
     <script src="assets/animated.js"></script>
-    <script src="assets/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/fontawesome/all.min.js"></script>
-    <script src="assets/bootstrap.min.js"></script>
+    <script src="./db.js"></script>
   </body>
 </html>

@@ -52,7 +52,7 @@ function takeNote(){
         
     document.querySelector(".note").style.width="800px"
     document.querySelector(".note .hide").style.display="block"
-    document.querySelector(".note").style.overflow="visible"
+    document.querySelector(".note").style.overflow="scroll"
     
         close = true
 }
@@ -61,6 +61,19 @@ document.querySelector('.note .nav .btn-danger').addEventListener("click",()=>{
         document.querySelector(".note").style.width="0px"
         document.querySelector(".note .hide").style.display="none"
         document.querySelector(".note").style.overflow="hidden"
+        document.querySelector('.note .note-body #note-content').value =""
         close = false
     }
 })
+
+// Note Tab navigations
+const panels = document.querySelectorAll('.note .note-body .panel')
+console.log(panels);
+function showPanel(panelIndex){
+    panels.forEach(panel => {
+        panel.style.display="none"
+    });
+    panels[panelIndex].style.display="block"
+    // tabPanels[paneIndex].style.display="block";
+}
+showPanel(0)

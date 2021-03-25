@@ -46,7 +46,8 @@
   },
   "dependencies": {
     "@trodi/electron-splashscreen": "^1.0.0",
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "sqlite3": "^5.0.2"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.54",
