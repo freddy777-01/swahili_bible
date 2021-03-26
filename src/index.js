@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain,Menu } = require('electron');
 const path = require('path');
 const fs = require('fs');
 // import * as splashScreen from "@trodi/electron-splashscreen";
@@ -23,11 +23,11 @@ const getIcon =()=>{
 app.on('ready',() => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
+    width: 900,
     height: 600,
     show: false,
     icon:getIcon(),
-    minWidth:800,
+    minWidth:900,
     minHeight:600,
     backgroundColor:'#2e2c29',
     webPreferences:{
@@ -45,6 +45,8 @@ app.on('ready',() => {
      transparent: true, 
      frame: false, 
      alwaysOnTop: true,
+     parent:mainWindow,
+     modal:true,
      icon:getIcon(),
     });
    splashScreen.loadFile(path.join(__dirname,'splash-screen.html'));
@@ -66,6 +68,57 @@ app.on('ready',() => {
   });
 
 });
+
+// Creating Menu
+const isMac = process.platform === 'darwin'
+Menu.setApplicationMenu(Menu.buildFromTemplate([
+  ...(isMac ?[{
+    label:app.name,
+    submenu:[
+      {role:'about'},
+      {type:'separator'},
+      {role:'services'},
+      {role:'hideothers'},
+      {role:'unhide'},
+      {type:'separator'},
+      {role:'quit'}
+    ]
+  }]:[]),
+  {
+    label: 'File',
+    submenu:[
+      isMac ? {role:'close'} : {role:'quit'}
+    ]
+  },
+  {
+    label:'View',
+    submenu:[
+      {role:'reload'},
+      {role:'forceReload'},
+      {type:'separator'},
+      {role:'zoomIn'},
+      {role:'zoomOut'},
+      {role:'resetZoom'},
+      {role:'togglefullscreen'},
+      {type:'separator'},
+      {role:'toggleDevTools'}
+    ]
+  },
+  {
+    label: 'Window',
+    submenu: [
+      { role: 'minimize' },
+      ...(isMac ? [
+        { type: 'separator' },
+        { role: 'front' },
+        { type: 'separator' },
+        { role: 'window' }
+      ] : [
+        { role: 'close' }
+      ])
+    ]
+  }
+]))
 
 
 // This method will be called when Electron has finished

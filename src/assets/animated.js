@@ -56,7 +56,7 @@ function takeNote(){
     
         close = true
 }
-document.querySelector('.note .nav .btn-danger').addEventListener("click",()=>{
+document.querySelector('.note .nav .close-note').addEventListener("click",()=>{
     if (close) {
         document.querySelector(".note").style.width="0px"
         document.querySelector(".note .hide").style.display="none"
@@ -68,12 +68,43 @@ document.querySelector('.note .nav .btn-danger').addEventListener("click",()=>{
 
 // Note Tab navigations
 const panels = document.querySelectorAll('.note .note-body .panel')
-console.log(panels);
 function showPanel(panelIndex){
     panels.forEach(panel => {
         panel.style.display="none"
     });
     panels[panelIndex].style.display="block"
-    // tabPanels[paneIndex].style.display="block";
 }
 showPanel(0)
+
+// MOdals
+const modalContent = document.querySelector('.modial .modal-dialog .modal-content')
+
+const aboutBtn = document.querySelector('#mySidenav .help-navs ul .about')
+const learnMoreBtn = document.querySelector('#mySidenav .help-navs ul .learn-more')
+
+aboutBtn.onclick =()=>{
+    document.querySelector('#contact-modal').style.display="block";
+}
+
+learnMoreBtn.onclick=()=>{
+    document.querySelector('#LearnMore-modal').style.display="block";
+}
+
+const modalCloseBtns = document.querySelectorAll('.modial .modal-header .close')
+modalCloseBtns.forEach(btn => {
+    const contactModal =document.querySelector('#contact-modal')
+    const learnMore =document.querySelector('#LearnMore-modal')
+    const modals =document.querySelectorAll('.modial')
+    btn.onclick=()=>{
+        if ((contactModal.style.display==="block" || learnMore.style.display==="none") || (contactModal.style.display==="none" || learnMore.style.display==="block")) {
+            modals.forEach(modal => {
+                modal.style.display="none"
+            });
+        }
+    }
+});
+/* modalCloseBtn.onclick=(e)=>{
+    modal.style.display="none"
+    console.log('Want to close !!!');
+    console.log(e.target.parentElement);
+} */

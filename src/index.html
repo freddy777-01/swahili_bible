@@ -22,11 +22,75 @@
           <label for="ck">🌞</label>
           <input type="checkbox" name="" id="ck">
           </div>
+        </div>
+        <div class="help-navs pl-5">
+          <h5>Help</h5>
+          <ul class="ml-3">
+            <li class="about">Contact Me</li>
+            <li class="learn-more">Learn More</li>
+          </ul>
+        </div>
     </div>
+
+    
+    <!--Contact Me Modal -->
+    <div class="modial" id="contact-modal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div id="msg-box"></div>
+            <h5 class="modal-title">Contact Me</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+            <form action="">
+              <div class="form-group">
+                <label for="email-box">Email</label>
+                <input type="email" class="form-control" name="" id="email-box" aria-describedby="emailHelpId" placeholder="Email">
+                <small id="emailHelpId" class="form-text text-muted">Help text</small>
+              </div>
+              <div class="form-group">
+                <label for="msg-box">Message</label>
+                <textarea class="form-control" name="" id="msg-box" rows="3"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+            <small class="text-muted">Send</small>
+            <button type="button" class="btn btn-success"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Learn more Modal -->
+    <div class="modial" id="LearnMore-modal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div id="msg-box"></div>
+            <h5 class="modal-title">How it is</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+            Baba
+          </div>
+          <div class="modal-footer">
+            Fotter kuku
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
 <div id="main">
 
-  <nav class="nav nav-pills fixed-top shadow pl-3 pt-2 pr-3">
+  <nav class="stay-top nav nav-pills fixed-top pl-3 pt-2 pr-3">
     <i id="menu-icon" class="fa fa-cogs" aria-hidden="true" onclick="openNav()"></i>
     <!-- <img src="icons/menu-button.png" alt="" srcset="" id="menu-icon" onclick="openNav()"> -->
     <a class="nav-link" href="#">
@@ -51,6 +115,9 @@
     <!-- <a href="splash-screen.html">Sample</a> -->
     <!-- <a class="nav-link" href="#">Disabled link</a> -->
   </nav>
+
+
+  
 <div class="container-fluid mt-5">
     <div class="bible-content-body">
       <section id="bible-content"></section>
@@ -59,10 +126,10 @@
     <div class="note">
       <div class="hide">
       <div class="nav btn-group btn-group-sm">
-        <button type="button" class="btn btn-danger" onclick="takeNote()">Close</button>
-        <button type="button" class="btn btn-primary" id="my-notes" onclick="showPanel(1)">My Notes</button>
-        <button type="button" class="btn btn-info" id="take-note" onclick="showPanel(0)">Take Notes</button>
-        <button type="button" class="btn btn-warning " id="read-note" onclick="showPanel(2)">Read Note</button>
+        <button type="button" class="btn btn-outline-danger close-note" onclick="takeNote()">Close</button>
+        <button type="button" class="btn btn-outline-primary" id="my-notes" onclick="showPanel(1)">My Notes</button>
+        <button type="button" class="btn btn-outline-info" id="take-note" onclick="showPanel(0)">Take Notes</button>
+        <button type="button" class="btn btn-outline-warning " id="read-note" onclick="showPanel(2)">Read Note</button>
       </div>
       <div class="note-body">
         <div class="msg t-bold m-2"></div>
@@ -70,7 +137,7 @@
           <div class="form-group">
             <label for="">Title</label>
             <input type="text"
-                class="form-control form-control-sm" name="" id="note-title" aria-describedby="helpId" placeholder="">
+                class="form-control form-control-sm" name="" id="note-title" aria-describedby="helpId" placeholder="Title For the Note">
             <small id="helpId" class="form-text text-muted">Enter Title of the Note</small>
           </div>
           <!-- <textarea name="" id="" cols="70" rows="20"></textarea> -->
@@ -82,6 +149,7 @@
           </div>
         </div>
         <div class="panel view-notes">
+          <button type="button" class="btn btn-outline-danger btn-sm btn-block" onclick="toDeleteAll()"><i class="fas fa-trash-alt mr-2"></i>Delete all notes</button>
           <div class="view-notes-body"></div>
           <div class="view-notes-footer">
             <div class="t-bold m-2"></div>

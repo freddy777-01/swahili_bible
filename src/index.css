@@ -90,6 +90,40 @@ nav #take-note{
   cursor: pointer;
   color: black;
 }
+.sidenav .help-navs ul{
+  list-style-type: disc;
+}
+.sidenav .help-navs ul li{
+  cursor: pointer;
+  font-weight: 700;
+}
+.sidenav .help-navs ul li:hover{
+  color: #e4e4e4;
+}
+/* END IF THE SIDE NAV */
+
+/* MODAL CSS */
+.modial{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+/* Animation for Modal */
+@keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+/* END OF MODAL CSS */
 
 #main {
   transition: margin-left .5s;
@@ -140,10 +174,18 @@ nav #take-note{
 .btnMain-body input[type=checkbox]{
   display: none;
 }
+/* End for switch Btn */
+
+/* class to apply */
 .stay-top{
-  position: fixed;
    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.noteBg{
+  background-color: #d8d8d88e;
+  border-radius: 5px;
+  padding: 3px;
+}
+/* End class to apply */
 
 #main .container-fluid{
   display: flex;
@@ -151,8 +193,8 @@ nav #take-note{
 /* Note Taking Div */
 .note{
   /* resize: horizontal; */
-  width: 800px;
-  /* width: 0px; */
+  /* width: 800px; */
+  width: 0px;
   /* border: 2px solid red; */
   /* border-left: 3px solid rgb(100, 100, 100); */
   position: sticky;
@@ -173,14 +215,14 @@ nav #take-note{
   outline: none;
 }
 .note .hide{
-  /* display: none; */
+  display: none;
 }
 .note .note-body .panel{
   display: none;
 }
 .note textarea {
-  max-width: 30rem;
-  max-height: 30rem;
+  max-width: 24rem;
+  max-height: 24rem;
   padding: 5px;
   resize: both;
   border-radius: 5px;
@@ -195,16 +237,19 @@ nav #take-note{
   font-weight: 700;
   font-style: oblique;
 }
+/* End of Some topography */
+
 .note .note-body .view-notes .view-notes-body .note-view:hover{
+  cursor: pointer;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-/* Medium devices (landscape tablets, 768px and down) */
-@media only screen and (max-width: 780px) {
+/* Medium devices (landscape tablets, 900px and down) */
+@media only screen and (max-width: 900px) {
   .note{
     /* width: 200px; */
     position: sticky;
     /* overflow: hidden; */
-    top: 30rem;
+    top: 20px;
     /* right: 1rem; */
   }
 }

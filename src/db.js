@@ -53,22 +53,29 @@ const allData = ()=>{
   dbm.dbcon.all('SELECT * FROM mynotes',(err,rows)=>{
     if(err) console.log('there is error');
     // console.log(rows);
-    rows.forEach(row => {
-      if (row.deleted == '1') {
-        
-        document.querySelector('.note .note-body .view-notes .view-notes-body').innerHTML+=`
-        <div class="note-view border rounded mt-1 mb-1 p-1">
-        <h4>${row.title}</h4>
-        <p>${row.notes}</p>
-        <smal><i>${row.created_at}</i></smal>
-        <div class="note-view-footer">
-        <button class="btn btn-sm btn-outline-info read-note" data-id="${row.id}" onclick="thisNote(${row.id})">Read</button>
-        <button class="btn btn-sm btn-outline-dark delete-note" data-id="${row.id}" onclick="toDelete(${row.id})">Delete</button>
-        </div>
-        </div>
-        `
-      }
-    });
+    if (rows.length != 0) {
+      
+      rows.forEach(row => {
+        if (row.deleted == '1') {
+          
+          document.querySelector('.note .note-body .view-notes .view-notes-body').innerHTML+=`
+          <div class="note-view border rounded mt-1 mb-1 p-1">
+          <h4>${row.title}</h4>
+          <p class="noteBg">${row.notes}</p>
+          <smal><i>${row.created_at}</i></smal>
+          <div class="note-view-footer">
+          <button class="btn btn-sm btn-outline-info read-note" data-id="${row.id}" onclick="thisNote(${row.id})">Read</button>
+          <button class="btn btn-sm btn-outline-dark delete-note" data-id="${row.id}" onclick="toDelete(${row.id})">Delete</button>
+          </div>
+          </div>
+          `
+        }
+      });
+    }else{
+      document.querySelector('.note .note-body .view-notes .view-notes-body').innerHTML=`
+      <h3 class="m-4">You Have No Notes💭💭💭</h3>
+      `
+    }
   })
 }
 allData()
@@ -161,6 +168,10 @@ function thisNote(id) {
 }
 function toDelete(id){
   deleteNote(id)
+  allData()
+}
+function toDeleteAll(){
+  deleteAll()
   allData()
 }
 /* let dt = new Date()
