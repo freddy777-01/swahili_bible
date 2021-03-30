@@ -243,6 +243,25 @@ nav #take-note{
   cursor: pointer;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+/* Customizing scroll bar */
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(255, 84, 226);
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(255, 43, 255);
+  border-radius: 10px;
+}
+
 /* Medium devices (landscape tablets, 900px and down) */
 @media only screen and (max-width: 900px) {
   .note{

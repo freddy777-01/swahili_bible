@@ -3,9 +3,7 @@ const fs = require('fs');
 const sqlite = require('sqlite3')
 const os = require('os')
 const computerName = os.hostname()
-console.log(computerName);
-// const childWin = exports.childWin = require('./index').child
-// console.log(path.join(__dirname + '\\bibles\\','swahili_utf8.txt'))
+// console.log(computerName);
 const bibleCont = exports.bibleCont = ()=>{
     const fileN = path.join(__dirname + '\\Bibles\\','Swa2Bible.txt')
    return fs.readFileSync(fileN);

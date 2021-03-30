@@ -6,7 +6,7 @@
     <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
     <title>Biblia</title>
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="assets/fontawesome/all.min.js">
+    <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="assets//bootstrap/css/bootstrap.min.css">
   </head>
   <body>
@@ -18,16 +18,16 @@
             <div class="btn"></div>
           </div>
           <div>
-            <h5>Night Mode</h5>
+            <h5 class="" style="color: aliceblue;">Night Mode</h5>
           <label for="ck">🌞</label>
           <input type="checkbox" name="" id="ck">
           </div>
         </div>
         <div class="help-navs pl-5">
-          <h5>Help</h5>
+          <h5 style="color: aliceblue;">Help</h5>
           <ul class="ml-3">
             <li class="about">Contact Me</li>
-            <li class="learn-more">Learn More</li>
+            <li class="learn-more">About</li>
           </ul>
         </div>
     </div>
@@ -44,23 +44,15 @@
                 <span aria-hidden="true">&times;</span>
               </button>
           </div>
-          <div class="modal-body">
-            <form action="">
-              <div class="form-group">
-                <label for="email-box">Email</label>
-                <input type="email" class="form-control" name="" id="email-box" aria-describedby="emailHelpId" placeholder="Email">
-                <small id="emailHelpId" class="form-text text-muted">Help text</small>
-              </div>
-              <div class="form-group">
-                <label for="msg-box">Message</label>
-                <textarea class="form-control" name="" id="msg-box" rows="3"></textarea>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-            <small class="text-muted">Send</small>
-            <button type="button" class="btn btn-success"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+          <div class="modal-body p-3">
+            <!-- <h4>Contact Me By</h4> -->
+            <p class="" style="text-align: center;">
+              <ul class="" style="list-style-type: none; font-size: x-large; text-align: center;">
+                <li><i class="fa fa-envelope mr-2   "></i>fred45722@gmail.com</li>
+                <li><i class="fas fa-phone mr-2   "></i>+255739226770</li>
+                <li><kbd>Telegram<sup><i class="fab fa-telegram-plane mr-2   "></i></sup></kbd> +255789925268</li>
+              </ul>
+            </p>
           </div>
         </div>
       </div>
@@ -72,17 +64,22 @@
         <div class="modal-content">
           <div class="modal-header">
             <div id="msg-box"></div>
-            <h5 class="modal-title">How it is</h5>
+            <h5 class="modal-title">About Swahili Bible</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
           </div>
           <div class="modal-body">
-            Baba
+            <h5 class="text-warning rounded">‼ Use The App in FullScreen Mode for better View</h5>
+            <p class="p-4">
+
+              Version 1.0.0 Swahili Bible for windows.
+              Read and Take notes as much as you can.
+            </p>
           </div>
-          <div class="modal-footer">
+          <!-- <div class="modal-footer">
             Fotter kuku
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -164,10 +161,10 @@
 </div>
     <!-- javascripts -->
     <script src="assets/jquery.min.js"></script>
+    <script src="assets/fontawesome/js/all.min.js"></script>
     <script src="./renderer.js"></script>
     <script src="assets/animated.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/fontawesome/all.min.js"></script>
     <script src="./db.js"></script>
   </body>
 </html>
