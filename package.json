@@ -2,7 +2,7 @@
   "name": "swahili_bible",
   "productName": "swahili_bible",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "Desktop Bible in Swahili Language",
   "main": "src/index.js",
   "scripts": {
     "start": "electron-forge start",
@@ -11,20 +11,28 @@
     "publish": "electron-forge publish",
     "lint": "echo \"No linting configured\""
   },
-  "keywords": [],
+  "keywords": ["education"],
   "author": {
-    "name": "freddy777-01",
-    "email": "58578902+freddy777-01@users.noreply.github.com"
+    "name": "FEMAG",
+    "email": "fred45722@gmail.com"
   },
   "license": "MIT",
   "config": {
     "forge": {
-      "packagerConfig": {},
+      "packagerConfig": {
+        "executableName": "Swahili_Bible",
+        "overwrite": true,
+        "asar": false,
+        "icon": "src\\icons\\swahili_bible.ico"
+      },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "swahili_bible"
+            "name": "swahili_bible",
+            "setupExe": "Swahili_Bible",
+            "setupIcon": "src\\icons\\swahili_bible.ico",
+            "author": "Freddy MK"
           }
         },
         {

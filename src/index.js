@@ -29,7 +29,6 @@ app.on('ready',() => {
     webPreferences:{
     	scrollBounce:true,
       nodeIntegration:true,
-      // enableRemoteModule:true,
       preload:path.join(__dirname,'preload.js')
     }
   });
@@ -97,7 +96,6 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
       {role:'resetZoom'},
       {role:'togglefullscreen'},
       {type:'separator'},
-      {role:'toggleDevTools'}
     ]
   },
   {
