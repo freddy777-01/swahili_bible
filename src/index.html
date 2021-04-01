@@ -106,6 +106,21 @@
         <option value="N">Agano Jipya</option>
       </select>
     </a>
+    <a class="nav-link" id="bookmark"><i class="fas fa-bookmark    "></i>
+    <span id="bk-msg"></span>
+    </a>
+   
+    <div class="dropdown">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        Dropdown button
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+      </div>
+    </div>
+
     <a onclick="takeNote()" id="takeNote" href="#" class="nav-link" data-toggle="tooltip" data-placement="left" title="Take Note!">
       <i class="fas fa-edit" id="take-note"></i>
     </a>
@@ -128,6 +143,8 @@
         <button type="button" class="btn btn-outline-info" id="take-note" onclick="showPanel(0)">Take Notes</button>
         <button type="button" class="btn btn-outline-warning " id="read-note" onclick="showPanel(2)">Read Note</button>
       </div>
+
+
       <div class="note-body">
         <div class="msg t-bold m-2"></div>
         <div class="panel take-note">
@@ -160,11 +177,11 @@
 
 </div>
     <!-- javascripts -->
-    <script src="assets/jquery.min.js"></script>
+    <script src="assets/jquery-3.6.0.min.js"></script>
     <script src="assets/fontawesome/js/all.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="./renderer.js"></script>
     <script src="assets/animated.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="./db.js"></script>
   </body>
 </html>

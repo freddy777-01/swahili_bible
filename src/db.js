@@ -24,12 +24,52 @@ const createTb = ()=>{
     notes TEXT,
     created_at DATETIME,
     deleted INT(1))`;
+  const bkTable =`CREATE TABLE IF NOT EXISTS bookmarks(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    bookmark VARCHAR(20)
+  )`;
+
+  dbm.dbcon.serialize(()=>{
+
     dbm.dbcon.run(sql,(results,err)=>{
       if(results) console.log(results);
-     if(err) console.log(err);
+      if(err) console.log(err);
+    }).run(bkTable,(results,err)=>{
+      if(results) console.log(results);
+      if(err) console.log(err);
     })
+  })
 }
 createTb()
+
+// ADDING BOORKMARK
+// const bkmark = document.querySelector('nav #bookmark')
+/* const vitab =document.querySelector('#vitabu');
+const sura = document.querySelector('#sura')
+const agano = document.querySelector('#agano') */
+// BoorkMarking
+    // checking if there is any data in bookmark DB
+    
+/* bkmark.onclick=()=>{
+    let bkObj = {
+        Kitabu:vitabu.value,
+        Sura:sura.value,
+        Agano:agano.value
+    }
+    let sql = `INSERT INTO bookmarks(bookmark) VALUES('${JSON.stringify(bkObj)}')`;
+    dbm.dbcon.run(sql,(err)=>{
+      if (err) {
+        
+        document.querySelector('nav #bookmark #bk-msg').innerHTML = `<i class="fas fa-times    text-warning"></i>`
+      }
+    })
+    document.querySelector('nav #bookmark #bk-msg').innerHTML = `<i class="fas fa-check    text-success"></i>`
+    setTimeout(() => {
+      document.querySelector('nav #bookmark #bk-msg').innerHTML=''
+    }, 3000);
+    
+} */
+
 
 // INPUT DATA TO THE DATABASE
 const insertData = (title,notes,date,deleted)=>{

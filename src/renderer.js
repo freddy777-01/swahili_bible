@@ -1,12 +1,13 @@
 // const remote = require('electron').remote;
-// const preload = require('./preload.js');
+const bkm = require('./preload.js')
 const bible = require('./bibleQuery')
 
 const view = document.querySelector('#bible-content');
 const vitabu =document.querySelector('#vitabu');
-const txtArea = document.querySelector('textarea');
+// const txtArea = document.querySelector('textarea');
 const sura = document.querySelector('#sura')
 const agano = document.querySelector('#agano')
+const bkmark = document.querySelector('nav #bookmark')
 const clearBibleView = ()=> view.innerHTML=""
 
 // DIPLAYING BIBLE VERSES
@@ -85,3 +86,26 @@ bibleVerses(vitabu.value,sura.value)
 sura.addEventListener('change',(e)=>{
     bibleVerses(vitabu.value,e.target.value)
 })
+
+
+// BoorkMarking
+    // checking if there is any data in bookmark DB
+    
+    console.log(bkm.bk());
+bkmark.onclick=()=>{
+    let bkObj = {
+        Kitabu:vitabu.value,
+        Sura:sura.value,
+        Agano:agano.value
+    }
+    // console.log(vitabu.value +'-'+sura.value+'-'+agano.value);
+    console.log(bkObj);
+    // let bkArr = bkm.bk
+    // console.log(typeof bkArr);
+    // bkm.addBk(JSON.stringify(bkObj))
+    document.querySelector('nav #bookmark #bk-msg').innerHTML = bkm.addBk((JSON.stringify([bkObj])))
+    setTimeout(() => {
+        document.querySelector('nav #bookmark #bk-msg').innerHTML = ''
+    }, 3000);
+}
+
