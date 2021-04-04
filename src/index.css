@@ -35,22 +35,80 @@ nav select{
 }
 nav #take-note{
   position: absolute;
-  right: 5px;
+  right: 8px;
   font-size: 2rem;
   text-decoration: none;
   color: #585757;
+  bottom: 5px;
 }
-nav #bookmark{
+/* nav #bookmark{
   color: #868686;
   margin-left: 3rem;
-  margin-right: 2rem;
 }
 nav #bookmark i{
   font-size: 5px;
 }
 nav #bookmark:hover{
   box-shadow: 0 4px 8px 0 rgba(255, 42, 237, 0.19), 0 6px 20px 0 rgba(255, 0, 234, 0.19);
+} */
+
+/* Dropdown Button */
+.dropbtn:hover {
+  box-shadow: 0 4px 8px 0 rgba(255, 42, 237, 0.19), 0 6px 20px 0 rgba(255, 0, 234, 0.19);
 }
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-left: 3rem;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 190px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 0px 0px 10px 10px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content div {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+.dropdown-content div .this-bookmark{
+  margin-right: 30px;
+}
+.dropdown-content div .delete-bookmark{
+  width: 25px;
+  padding: 2px 5px 0px 5px;
+  /* border: 1px solid red; */
+  transition: color .4s ease-in-out;
+}
+.dropdown-content div .delete-bookmark:hover{
+  color: red;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content div:hover {
+  background-color: #ddd;
+  border-left: 2px solid rgb(255, 84, 226);
+  border-right: 2px solid rgb(255, 84, 226);
+  border-radius: 10px 10px 10px 10px;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+
+/* END OF DROPDOWN BUTTON */
 
 /* nav #takeNote{
   border: 2px solid red;
@@ -108,6 +166,10 @@ nav #bookmark:hover{
   cursor: pointer;
   color: black;
 }
+.sidenav .help-navs{
+  /* border: 2px solid red; */
+  padding-left: 15px;
+}
 .sidenav .help-navs ul{
   list-style-type: disc;
 }
@@ -135,6 +197,19 @@ nav #bookmark:hover{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     animation-name: animatetop;
     animation-duration: 0.4s
+}
+.modial .modal-header button{
+  background: none;
+  border: none;
+  padding: 15;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 26px;
+  border-radius: 20%;
+}
+.modial .modal-header button:hover{
+  font-weight: 600;
 }
 /* Animation for Modal */
 @keyframes animatetop {

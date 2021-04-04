@@ -1,3 +1,4 @@
+// const { bible } = require('./bibleQuery.js');
 const dbm = require('./preload.js')
 
 /* 
@@ -43,33 +44,108 @@ const createTb = ()=>{
 createTb()
 
 // ADDING BOORKMARK
-// const bkmark = document.querySelector('nav #bookmark')
-/* const vitab =document.querySelector('#vitabu');
+/* const bkmark = document.querySelector('nav #bookmark')
+const vitab =document.querySelector('#vitabu');
 const sura = document.querySelector('#sura')
 const agano = document.querySelector('#agano') */
-// BoorkMarking
+/* BoorkMarking */
+
+// >>getting book title
+const bookTitle =(titleNum)=>{
+  const titles = bible.bible.titleNums()
+  // console.log(titles);
+  let temp,title_name
+  if (titleNum[0] == 0) { //Filtering the title id
+    temp = titleNum[1]
+  }else {temp = titleNum}
+
+  titles.forEach(title => {
+    if(title[0] >0){
+      if (Number(title[0] == Number(temp))) {
+        // console.log(title[1]);
+        title_name = title[1]
+      }
+    }
+    // console.log(title);
+  });
+ return title_name
+}
+// bookTitle()
+// >>End of book title
+
     // checking if there is any data in bookmark DB
-    
-/* bkmark.onclick=()=>{
+    const bkManager ={
+      selectBookmarks:()=>{
+        let temp =[],ag = null
+        bkContents.innerHTML=''
+        dbm.dbcon.all('SELECT * FROM bookmarks LIMIT 5',(err,rows)=>{
+          if(err) console.log(err);
+          if (rows.length > 0) {
+            rows.forEach(row => {
+              temp.splice(0,temp.length)
+              temp.push(JSON.parse(row.bookmark).Kitabu)
+               temp.push(JSON.parse(row.bookmark).Sura)
+               temp.push(JSON.parse(row.bookmark).Agano)
+              console.log(row.bookmark)
+              if (JSON.parse(row.bookmark).Agano == 'O') ag=' La Kale'
+              else ag = 'Jipya'
+              bkContents.innerHTML +=`
+              <div class="d-flex">
+              <span class="this-bookmark mr-2" onclick="bkFunction(this)" data-bmk="${temp}">
+              ${bookTitle(JSON.parse(row.bookmark).Kitabu)}, Sura: ${JSON.parse(row.bookmark).Sura}
+              </span>
+              <span class="delete-bookmark" onclick="deleteBookmark(${row.id})">
+              <i class="fas fa-times    "></i>
+              </span>
+              </div>
+              `
+              
+            });
+          }else{
+            bkContents.innerHTML = 'Add to Bookmark'
+          }
+        })
+      },
+      deleteBookmark:(id)=>{
+        dbm.dbcon.run(`DELETE FROM bookmarks WHERE id ='${id}'`,(err)=>{
+          if(err){
+           return false
+          }
+        })
+      }
+    }
+    bkManager.selectBookmarks() //This files the bookmark content after pageloads
+bkmark.onclick=()=>{
     let bkObj = {
         Kitabu:vitabu.value,
         Sura:sura.value,
         Agano:agano.value
     }
     let sql = `INSERT INTO bookmarks(bookmark) VALUES('${JSON.stringify(bkObj)}')`;
-    dbm.dbcon.run(sql,(err)=>{
-      if (err) {
-        
-        document.querySelector('nav #bookmark #bk-msg').innerHTML = `<i class="fas fa-times    text-warning"></i>`
-      }
-    })
-    document.querySelector('nav #bookmark #bk-msg').innerHTML = `<i class="fas fa-check    text-success"></i>`
-    setTimeout(() => {
-      document.querySelector('nav #bookmark #bk-msg').innerHTML=''
-    }, 3000);
-    
-} */
 
+    dbm.dbcon.all('SELECT COUNT(bookmark) AS bkNum FROM bookmarks',(err,rows)=>{
+      // console.log(rows[0].bkNum)
+      if (rows[0].bkNum > 4) {
+        document.querySelector('nav #bookmark #bk-msg').innerHTML = `<i class="fas fa-times    text-danger"></i>`
+      }else{
+        dbm.dbcon.run(sql,(err)=>{
+          if (err) {
+            
+            document.querySelector('nav #bookmark #bk-msg').innerHTML = `<i class="fas fa-times    text-danger"></i>`
+          }
+        })
+
+        document.querySelector('nav .dropdown #bookmark #bk-msg').innerHTML = `<i class="fas fa-check    text-success"></i>`
+        bkManager.selectBookmarks()
+      }
+      setTimeout(() => {
+        document.querySelector('nav .dropdown #bookmark #bk-msg').innerHTML=''
+      }, 3000);
+    })
+    
+    // console.log(bkManager.selectBookmarks())
+}
+/* End Of BookMaking */
 
 // INPUT DATA TO THE DATABASE
 const insertData = (title,notes,date,deleted)=>{
@@ -214,26 +290,8 @@ function toDeleteAll(){
   deleteAll()
   allData()
 }
-/* let dt = new Date()
-let td = dt.getDate()+'-'+dt.getMonth()+'-'+dt.getFullYear()
-console.log(dt.toDateString()) */
-/* try {
-            
-    const knex = require('knex')({
-        client: 'sqlite3',
-        connection: {
-          filename: './database/notes.db',
-        },
-      });
-    
-    //   creating table
-    await knex.schema
-      .createTable('myNotes',table=>{
-          table.increments('id')
-          table.string('title')
-          table.text('notes')
-          table.timestamp('created_at')
-      })
-} catch (error) {
-    console.log(error);
-} */
+function deleteBookmark(id) {
+  bkManager.deleteBookmark(id)
+  bkManager.selectBookmarks()
+}
+

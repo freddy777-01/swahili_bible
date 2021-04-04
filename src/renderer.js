@@ -7,7 +7,8 @@ const vitabu =document.querySelector('#vitabu');
 // const txtArea = document.querySelector('textarea');
 const sura = document.querySelector('#sura')
 const agano = document.querySelector('#agano')
-const bkmark = document.querySelector('nav #bookmark')
+const bkmark = document.querySelector('nav .dropdown #bookmark') //This is bookmark button
+const bkContents = document.querySelector('nav .dropdown .dropdown-content') //this is Bookmark contents
 const clearBibleView = ()=> view.innerHTML=""
 
 // DIPLAYING BIBLE VERSES
@@ -88,24 +89,22 @@ sura.addEventListener('change',(e)=>{
 })
 
 
-// BoorkMarking
-    // checking if there is any data in bookmark DB
-    
-    console.log(bkm.bk());
-bkmark.onclick=()=>{
-    let bkObj = {
-        Kitabu:vitabu.value,
-        Sura:sura.value,
-        Agano:agano.value
+// Selecting From BoorkMark
+
+
+function bkFunction(b) {
+    let j =b.dataset.bmk
+    let kitabu =j[0]+""+j[1]
+    let sra =j[3]
+    // console.log(j[0]+""+j[1])
+        agano.value = j[5]
+        if(j[5] ==='N')  booksByAgano(bible.bible.newTestament());
+        else booksByAgano(bible.bible.oldTestament())
+  
+         tafutaSura(kitabu); //this takes the kitabu value
+  
+         vitabu.value = kitabu
+         sura.value =sra
+          bibleVerses(kitabu,sra)
     }
-    // console.log(vitabu.value +'-'+sura.value+'-'+agano.value);
-    console.log(bkObj);
-    // let bkArr = bkm.bk
-    // console.log(typeof bkArr);
-    // bkm.addBk(JSON.stringify(bkObj))
-    document.querySelector('nav #bookmark #bk-msg').innerHTML = bkm.addBk((JSON.stringify([bkObj])))
-    setTimeout(() => {
-        document.querySelector('nav #bookmark #bk-msg').innerHTML = ''
-    }, 3000);
-}
 

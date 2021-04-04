@@ -23,7 +23,7 @@
           <input type="checkbox" name="" id="ck">
           </div>
         </div>
-        <div class="help-navs pl-5">
+        <div class="help-navs">
           <h5 style="color: aliceblue;">Help</h5>
           <ul class="ml-3">
             <li class="about">Contact Me</li>
@@ -88,7 +88,7 @@
 <div id="main">
 
   <nav class="stay-top nav nav-pills fixed-top pl-3 pt-2 pr-3">
-    <i id="menu-icon" class="fa fa-cogs" aria-hidden="true" onclick="openNav()"></i>
+    <i id="menu-icon" class="fa fa-cogs ml-2" aria-hidden="true" onclick="openNav()"></i>
     <!-- <img src="icons/menu-button.png" alt="" srcset="" id="menu-icon" onclick="openNav()"> -->
     <a class="nav-link" href="#">
       <select name="vitabu" id="vitabu">
@@ -106,23 +106,21 @@
         <option value="N">Agano Jipya</option>
       </select>
     </a>
-    <a class="nav-link" id="bookmark"><i class="fas fa-bookmark    "></i>
+    <!-- <a class="nav-link" id="bookmark"><i class="fas fa-bookmark    "></i>
     <span id="bk-msg"></span>
-    </a>
+    </a> -->
    
     <div class="dropdown">
-      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-        Dropdown button
+      <button id="bookmark" class="dropbtn btn btn-outline-light text-secondary" data-toggle="tooltip" data-placement="down" title="Bookmark"><i class="fas fa-bookmark    "></i>
+        <span id="bk-msg"></span>
       </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Link 1</a>
-        <a class="dropdown-item" href="#">Link 2</a>
-        <a class="dropdown-item" href="#">Link 3</a>
+      <div class="dropdown-content">
+        No BookMark
       </div>
     </div>
 
-    <a onclick="takeNote()" id="takeNote" href="#" class="nav-link" data-toggle="tooltip" data-placement="left" title="Take Note!">
-      <i class="fas fa-edit" id="take-note"></i>
+    <a id="takeNote" href="#" class="nav-link" data-toggle="tooltip" data-placement="left" title="Take Note!">
+      <i onclick="takeNote()" class="fas fa-edit" id="take-note"></i>
     </a>
     <!-- <a href="splash-screen.html">Sample</a> -->
     <!-- <a class="nav-link" href="#">Disabled link</a> -->
