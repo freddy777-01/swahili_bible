@@ -6,6 +6,7 @@
     <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
     <title>Biblia</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="assets/tooltip.css">
     <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="assets//bootstrap/css/bootstrap.min.css">
   </head>
@@ -76,6 +77,8 @@
               Version 1.0.0 Swahili Bible for windows.
               Read and Take notes as much as you can.
             </p>
+            <p>Use -> <i class="fas fa-bookmark    "></i> to Bookmark a book, only 5 bookmarks the bookmark-list can take</p>
+            <p>Use -> <i class="fas fa-highlighter    "></i> to highlight and change highlight color</p>
           </div>
           <!-- <div class="modal-footer">
             Fotter kuku
@@ -128,7 +131,7 @@
 
 
   
-<div class="container-fluid mt-5">
+<div class="container-fluid">
     <div class="bible-content-body">
       <section id="bible-content"></section>
       
@@ -181,5 +184,10 @@
     <script src="./renderer.js"></script>
     <script src="assets/animated.js"></script>
     <script src="./db.js"></script>
+    <!-- <script>
+      $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip();
+      });
+      </script> -->
   </body>
 </html>

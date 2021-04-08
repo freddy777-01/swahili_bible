@@ -104,8 +104,35 @@ modalCloseBtns.forEach(btn => {
         }
     }
 });
-/* modalCloseBtn.onclick=(e)=>{
-    modal.style.display="none"
-    console.log('Want to close !!!');
-    console.log(e.target.parentElement);
-} */
+
+
+/* HighLiting Versers */
+const highlight=(color=null,key)=>{
+    let verses = document.querySelectorAll('#bible-content .verse-content')
+    verses.forEach(verse=>{
+        if(verse.dataset.key === key){
+            verse.children[1].style.backgroundColor = color
+        }
+    })
+    // console.log(color);
+}
+
+function highlighter(me,c,key){
+    let verseContainer = me.parentElement.parentElement
+    let keyData = verseContainer.dataset.key
+    let verseText = verseContainer.children[1]
+    highlighted(key,c) // this function is in render.js
+    highlight(c,key)
+}
+function changeColor(me,color,key){
+    let verseContainer = me.parentElement.parentElement.parentElement
+    let verseText = verseContainer.children[1]
+    highlighted(key,color) //this functions is in render.js
+    highlight(color,key)
+    // console.log(key);
+}
+function removeColor(key){ //this function removes the highlights
+    highlight(null,key)
+    deHighlight(key)
+}
+/* END HighLiting Versers */

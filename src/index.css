@@ -114,6 +114,9 @@ nav #bookmark:hover{
   border: 2px solid red;
 } */
 
+#bible-content{
+  padding: 70px 0px 5px 0px;
+}
 .verse {
 	font-weight: bold;
 	color: #D2B48C;

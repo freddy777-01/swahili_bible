@@ -16,6 +16,7 @@ const dbm = require('./preload.js')
     if(err) console.log(err);
    })
 })(); */
+
 let msgBox =document.querySelector('.note .msg')
 
 const createTb = ()=>{
@@ -29,6 +30,11 @@ const createTb = ()=>{
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     bookmark VARCHAR(20)
   )`;
+  const highlight =`CREATE TABLE IF NOT EXISTS highlights(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    address VARCHAR(20),
+    colors VARCHAR(15)
+  )`;
 
   dbm.dbcon.serialize(()=>{
 
@@ -36,6 +42,9 @@ const createTb = ()=>{
       if(results) console.log(results);
       if(err) console.log(err);
     }).run(bkTable,(results,err)=>{
+      if(results) console.log(results);
+      if(err) console.log(err);
+    }).run(highlight,(results,err)=>{
       if(results) console.log(results);
       if(err) console.log(err);
     })
@@ -76,17 +85,18 @@ const bookTitle =(titleNum)=>{
     // checking if there is any data in bookmark DB
     const bkManager ={
       selectBookmarks:()=>{
-        let temp =[],ag = null
+        let ag = null
         bkContents.innerHTML=''
         dbm.dbcon.all('SELECT * FROM bookmarks LIMIT 5',(err,rows)=>{
           if(err) console.log(err);
           if (rows.length > 0) {
+            let temp =[]
             rows.forEach(row => {
               temp.splice(0,temp.length)
               temp.push(JSON.parse(row.bookmark).Kitabu)
                temp.push(JSON.parse(row.bookmark).Sura)
                temp.push(JSON.parse(row.bookmark).Agano)
-              console.log(row.bookmark)
+              // console.log(row.bookmark)
               if (JSON.parse(row.bookmark).Agano == 'O') ag=' La Kale'
               else ag = 'Jipya'
               bkContents.innerHTML +=`
@@ -295,3 +305,23 @@ function deleteBookmark(id) {
   bkManager.selectBookmarks()
 }
 
+/* Hilighting functions */
+/* const highlighted = (key,color)=>{
+  dbm.dbcon.all('SELECT address,colors FROM highlights',(err,rows)=>{
+    if(err) console.log('there is error');
+    if (rows.length != 0) {
+      
+      rows.forEach(row => {
+        if(!(row.address === key)){
+          dbm.dbcon.run(`INSERT INTO highlights(address,colors) VALUES('${key}','${color}')`,(err)=>{
+            if(err) console.log(err);
+            console.log("Text highlighted");
+          })
+
+        }
+      })
+    }
+  })
+} */
+
+/* End of highlighting functions */

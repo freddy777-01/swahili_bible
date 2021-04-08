@@ -1,5 +1,5 @@
 // const remote = require('electron').remote;
-const bkm = require('./preload.js')
+const pre = require('./preload.js')
 const bible = require('./bibleQuery')
 
 const view = document.querySelector('#bible-content');
@@ -15,9 +15,32 @@ const clearBibleView = ()=> view.innerHTML=""
 const bibleVerses = (kt,suraNum)=>{
     let verses = bible.bible.bibleVerses(vitabu.value,sura.value)
     clearBibleView()
+
+  
     verses.forEach(el => {
-        // console.log(el);
-        view.innerHTML +=`<p class="verse-content"><span class="verse">${el[2]}</span>${el[3]}</p>`
+        let key = (el[0][0]+""+el[0][1]+""+el[1]+""+el[2]).toString() //this key combines kitabu-aya-mstari
+        pre.dbcon.get(`SELECT * FROM highlights WHERE address ='${key}'`,(err,row)=>{
+            //this block of code gets the hidhlights
+            if(err) console.log(err.message);
+            if (row) {
+                if (row.address === key) {
+                    
+                    highlight(row.colors,row.address) // this functions is in animate.js
+                }
+            }
+        })
+        view.innerHTML +=`<p class="verse-content" data-key="${el[0][0]+""+el[0][1]+""+el[1]+""+el[2]}"><span class="verse">${el[2]}</span>
+        <span class="verse-text rounded" >${el[3]}</span>
+        <span class="tooltp ml-2">
+        <i class="fas fa-highlighter    " onclick="highlighter(this,'#ffdb3b','${key}')"></i>
+        <span class="tooltiptext">
+        <span class="colors" style="background-color:#ffdb3b" data-color="#ffdb3b" onclick=changeColor(this,"#ffdb3b",'${key}')></span>
+        <span class="colors" style="background-color:#0891ec" data-color="#0891ec" onclick=changeColor(this,"#0891ec",'${key}')></span>
+        <span class="colors" style="background-color:#ea08ff" data-color="#ea08ff" onclick=changeColor(this,"#ea08ff",'${key}')></span>
+        <span class="remove-color"><i class="fas fa-trash-alt mr-2" onclick="removeColor('${key}')"></i></span>
+        </span>
+        </span>
+        </p>`
     });
 }
 
@@ -94,11 +117,24 @@ sura.addEventListener('change',(e)=>{
 
 function bkFunction(b) {
     let j =b.dataset.bmk
-    let kitabu =j[0]+""+j[1]
-    let sra =j[3]
-    // console.log(j[0]+""+j[1])
-        agano.value = j[5]
-        if(j[5] ==='N')  booksByAgano(bible.bible.newTestament());
+    let kitabu =j[0]+""+j[1],sra,agno
+    /* let sra =j[3]
+    let agano */
+    // console.log(j.length)
+    if (j.length == 8) {
+        sra = j[3]+""+j[4]+""+j[5]
+        agno = j[7]
+    }
+    if (j.length == 7) {
+        sra = j[3]+""+j[4]
+        agno =j[6]
+    }
+    if (j.length == 6) {
+        sra = j[3]
+        agno = j[5]
+    }
+        agano.value = agno
+        if(agno ==='N')  booksByAgano(bible.bible.newTestament());
         else booksByAgano(bible.bible.oldTestament())
   
          tafutaSura(kitabu); //this takes the kitabu value
@@ -107,4 +143,37 @@ function bkFunction(b) {
          sura.value =sra
           bibleVerses(kitabu,sra)
     }
+// end of bookmaking
 
+
+/* Highlighting functionality */
+  
+
+const highlighted = (key,color)=>{
+
+    pre.dbcon.all(`SELECT * FROM highlights WHERE address='${key}'`,(err,rows)=>{
+      if(err) console.log('there is error');
+      console.log(rows.length);
+              if (rows.length == 0) {
+                
+                      pre.dbcon.run(`INSERT INTO highlights(address,colors) VALUES('${key}','${color}')`,(err)=>{
+                          if(err) console.log(err);
+                          console.log("Text highlighted");
+                        })
+            }
+            pre.dbcon.run(`UPDATE highlights SET colors='${color}' WHERE address = '${key}'`,(err)=>{
+                if(err) console.log(err);
+                console.log("color updated");
+            })
+              
+          
+    })
+    // console.log('BIG ERROR');
+  }
+const deHighlight =(key)=>{ // Deleting highliting
+    pre.dbcon.run(`DELETE FROM highlights WHERE address ='${key}'`,(err)=>{
+        if(err) console.log(err);
+        console.log('color deleted');
+    })
+}
+/* End of HIghlighting functionality */

@@ -1,0 +1,6 @@
+>>create a table called => highlights
+>> columns : id,address(kitabu,sura,verse),colors
+>>rule:
+	1. if verse is highlited it cant be highligted
+>> change highlight color(use java script for realtime change)
+>>Delete the highlight color(use javascript to update the bg text color on realtime)
