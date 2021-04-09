@@ -231,7 +231,7 @@ const deleteAll = ()=>{
         msgBox.innerHTML=''
       }, 3000);
     }
-    msgBox.innerHTML=`<p class="text-danger">All Data Deleted !!!</p>`
+    msgBox.innerHTML=`<p class="text-danger">All Notes Deleted !!!</p>`
       setTimeout(() => {
         msgBox.innerHTML=''
       }, 3000); 

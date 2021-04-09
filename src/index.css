@@ -328,6 +328,9 @@ nav #bookmark:hover{
   padding: 6px;
   opacity: 0.8;
 }
+.note .note-body .read-notes{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 /* some topography */
 .t-bold{
   font-weight: 700;
