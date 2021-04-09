@@ -215,7 +215,7 @@ const deleteNote = (id)=>{
         msgBox.innerHTML=''
       }, 3000);
     }
-    msgBox.innerHTML=`<p class="text-danger">Messege Deleted !!!</p>`
+    msgBox.innerHTML=`<p class="text-danger">Note(s) Deleted !!!</p>`
       setTimeout(() => {
         msgBox.innerHTML=''
       }, 3000); 

@@ -98,8 +98,8 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
       {role:'zoomOut'},
       {role:'resetZoom'},
       {role:'togglefullscreen'},
-      {type:'separator'},
-      {role: 'toggleDevTools'}
+      {type:'separator'}
+      // {role: 'toggleDevTools'}
     ]
   },
   {
