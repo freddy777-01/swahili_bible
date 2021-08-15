@@ -90,3 +90,10 @@ typings/
 
 # Electron-Forge
 out/
+
+#lock Files
+*.lock
+
+#Bible files
+./src/Bible/
+./src/Titles/

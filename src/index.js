@@ -1,10 +1,11 @@
-const { app, BrowserWindow, ipcMain,Menu } = require('electron');
+const { app, BrowserWindow, autoUpdater, Menu,dialog} = require('electron');
 const path = require('path');
 const fs = require('fs');
 
-/* require('electron-reload')(__dirname,{
+
+/*require('electron-reload')(__dirname,{
   electron:path.join('../','node_modules','.bin','electron')
-}) */
+})*/
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
@@ -146,3 +147,32 @@ app.on('activate', () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
 
+// setting auto aupdater
+
+const server = 'https://update.electronjs.org';
+const feed = `${server}/OWNER/REPO/${process.platform}-${process.arch}/${app.getVersion()}`;
+
+autoUpdater.setFeedURL(feed);
+
+setInterval(()=>{
+  autoUpdater.checkForUpdates()
+}, 10 * 60 * 1000);
+
+autoUpdater.on('update-downloaded',(event,releaseNotes, realseName)=>{
+  const dialogOpts ={
+    type: 'info',
+    buttons: ['Restart','Later'],
+    title: 'Application Update',
+    message: process.platform === 'win32' ? releaseNotes : releaseName,
+    detail: 'A new version has been downloaded. Restart the application to apply the updates.'
+  }
+
+  dialog.showMessageBox(dialogOpts).then((returnValue)=>{
+    if(returnValue.response === 0) autoUpdater.quitAndInstall()
+  })
+})
+
+autoUpdater.on('error', message =>{
+  console.error('There was a probel updating the appllication')
+  console.error(message)
+})
