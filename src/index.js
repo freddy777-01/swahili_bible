@@ -1,6 +1,7 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, autoUpdater} = require('electron');
 const path = require('path');
 const fs = require('fs');
+
 
 require('electron-reload')(__dirname,{
   electron:path.join('../','node_modules','.bin','electron')
