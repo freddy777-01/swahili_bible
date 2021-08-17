@@ -92,8 +92,9 @@ typings/
 out/
 dist/
 
-#lock Files
-*.lock
+#lock files
+package-lock.json
+yarn.lock
 
 #Bible files
 src/Bibles/
