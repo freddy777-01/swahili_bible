@@ -99,3 +99,8 @@ yarn.lock
 #Bible files
 src/Bibles/
 src/Titles/
+
+#other files and files
+src/test.css
+build_installer.js
+windows_installer/

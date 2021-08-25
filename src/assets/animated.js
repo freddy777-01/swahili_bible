@@ -29,13 +29,13 @@ swich.addEventListener('click',(e)=>{
     // console.log(e.target.parentElement.parentElement);
     /* Night Mode */
     if (document.querySelector('input[type=checkbox]').checked) {
-        document.querySelector('#main').style.backgroundColor ="black"
-        document.querySelector('#main').style.color ="white"
+        document.querySelector('body').style.backgroundColor ="black"
+        document.querySelector('body').style.color ="white"
         document.querySelector('#main nav #menu-icon').style.color ="white"
         document.querySelector('.btnMain-body label').innerHTML ="🌚"
     }else {
-        document.querySelector('#main').style.backgroundColor ="white"
-        document.querySelector('#main').style.color ="black"
+        document.querySelector('body').style.backgroundColor ="white"
+        document.querySelector('body').style.color ="black"
         document.querySelector('#main nav #menu-icon').style.color =""
         document.querySelector('.btnMain-body label').innerHTML ="🌞"
     }

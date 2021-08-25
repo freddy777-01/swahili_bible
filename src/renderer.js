@@ -34,7 +34,7 @@ const bibleVerses = (kt,suraNum)=>{
         <span class="tooltp ml-2">
         <i class="fas fa-highlighter    " onclick="highlighter(this,'#ffdb3b','${key}')"></i>
         <span class="tooltiptext">
-        <span class="colors" style="background-color:#ffdb3b" data-color="#ffdb3b" onclick=changeColor(this,"#ffdb3b",'${key}')></span>
+        <span class="colors" style="background-color:#f5e068f5" data-color="#f5e068f5" onclick=changeColor(this,"#f5e068f5",'${key}')></span>
         <span class="colors" style="background-color:#0891ec" data-color="#0891ec" onclick=changeColor(this,"#0891ec",'${key}')></span>
         <span class="colors" style="background-color:#ea08ff" data-color="#ea08ff" onclick=changeColor(this,"#ea08ff",'${key}')></span>
         <span class="remove-color"><i class="fas fa-trash-alt mr-2" onclick="removeColor('${key}')"></i></span>

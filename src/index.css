@@ -227,6 +227,8 @@ nav #bookmark:hover{
 #main {
   transition: margin-left .5s;
   padding: 16px;
+  max-width: 100%;
+  height: 100%;
 }
 
 @media screen and (max-height: 450px) {

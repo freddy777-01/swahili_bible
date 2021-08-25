@@ -11,26 +11,37 @@
     "publish": "electron-forge publish",
     "lint": "echo \"No linting configured\""
   },
-  "keywords": [],
+  "keywords": [
+    "education"
+  ],
   "author": {
-    "name": "freddy777-01",
-    "email": "58578902+freddy777-01@users.noreply.github.com"
+    "name": "FEMAG",
+    "email": "fred45722@gmail.com"
   },
   "license": "MIT",
   "config": {
     "forge": {
-      "packagerConfig": {},
+      "packagerConfig": {
+        "extecutableName": "Swahili Bible",
+        "overwrite": true,
+        "asar": false,
+        "icon": "src\\icons\\swahili_bible.ico"
+      },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "swahili_bible"
+            "name": "Swahili Bible",
+            "setupExe": "Swahili Bible",
+            "setupIcon": "src\\icons\\swahili_bible.ico",
+            "author": "Freddy Makaranga"
           }
         },
         {
           "name": "@electron-forge/maker-zip",
           "platforms": [
-            "darwin"
+            "darwin",
+            "linux"
           ]
         },
         {
@@ -40,12 +51,25 @@
         {
           "name": "@electron-forge/maker-rpm",
           "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-wix",
+          "config": {
+            "description": "Bible in swahili Language",
+            "exe": "Swahili Bible",
+            "name": "Swahili Bible",
+            "manufacturer": "FEMAG",
+            "version": "1.0.0",
+            "shortName": "SWB"
+          }
         }
       ]
     }
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
+    "electron-wix-msi": "^3.2.0",
+    "sqlite3": "^5.0.2",
     "update-electron-app": "^2.0.1"
   },
   "devDependencies": {
