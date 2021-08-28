@@ -8,7 +8,7 @@ const fs = require('fs');
 })*/
 
 //Updater Values
-const server = 'https://swahili-bible-fcytabfpi-freddy777-01.vercel.app';
+const server = 'https://vercel.com/freddy777-01/swahili-bible/96vMpSgGyWqt59qpLynpUHYrbE7c';
 const url = `${server}/update/${process.platform}/${app.getVersion()}`;
 
 autoUpdater.setFeedURL({url});
@@ -129,7 +129,7 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
     ]
   },
   {
-    role:'Help',
+    label:'Help',
     submenu:[
       {
         label: 'update',
