@@ -1,11 +1,17 @@
-const { app, BrowserWindow, autoUpdater, Menu,dialog} = require('electron');
+const { app, BrowserWindow, autoUpdater, Menu,dialog,Notification} = require('electron');
 const path = require('path');
 const fs = require('fs');
-
+//require('update-electron-app')()
 
 /*require('electron-reload')(__dirname,{
   electron:path.join('../','node_modules','.bin','electron')
 })*/
+
+//Updater Values
+const server = 'https://swahili-bible-fcytabfpi-freddy777-01.vercel.app';
+const url = `${server}/update/${process.platform}/${app.getVersion()}`;
+
+autoUpdater.setFeedURL({url});
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
@@ -19,7 +25,9 @@ const getIcon =()=>{
   return path.join(__dirname,'icons/swahili_bible.png')
 }
 
+
 app.on('ready',() => {
+
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 900,
@@ -31,11 +39,12 @@ app.on('ready',() => {
     backgroundColor:'#2e2c29',
     darkTheme:true,
     webPreferences:{
-    	scrollBounce:true,
+      scrollBounce:true,
       nodeIntegration:true,
       preload:path.join(__dirname,'preload.js')
     }
   });
+  /* End of creating the main Browser window */
 
    // creating a splash window
    const splashScreen =new BrowserWindow({
@@ -67,6 +76,7 @@ app.on('ready',() => {
     mainWindow.show();
   });
 
+  return mainWindow
 });
 
 // Creating Menu
@@ -100,8 +110,8 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
       {role:'zoomOut'},
       {role:'resetZoom'},
       {role:'togglefullscreen'},
-      {type:'separator'}
-      // {role: 'toggleDevTools'}
+      {type:'separator'},
+      {role: 'toggleDevTools'}
     ]
   },
   {
@@ -114,12 +124,62 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
         { type: 'separator' },
         { role: 'window' }
       ] : [
-        { role: 'close' }
+        { role: 'close' },
       ])
+    ]
+  },
+  {
+    role:'Help',
+    submenu:[
+      {
+        label: 'update',
+        click: autoUpdater.checkForUpdates()
+      }
     ]
   }
 ]))
 
+setInterval(() => {
+  autoUpdater.checkForUpdates()
+}, 3000);
+
+autoUpdater.once('çhecking-for-update',()=>{
+  new Notification({
+    title: 'Updates',
+    icon: icoPath,
+    body: 'Swahili Bible is checking for updates'
+  })
+})
+autoUpdater.on('update-available',()=>{
+  new Notification({
+    title: 'Downloading Updates',
+    icon: icoPath,
+    body: 'Swahili Bible is Downloading updates'
+  })
+})
+autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
+  const dialogOpts = {
+    type: 'info',
+    buttons: ['Restart', 'Later'],
+    title: 'Application Update',
+    message: process.platform === 'win32' ? releaseNotes : releaseName,
+    detail: 'A new version has been downloaded. Restart the application to apply the updates.'
+  }
+
+  dialog.showMessageBox(dialogOpts).then((returnValue) => {
+    if (returnValue.response === 0) autoUpdater.quitAndInstall()
+  })
+})
+autoUpdater.on('error', message => {
+  dialog.showMessageBox({
+    type: 'error',
+    title: 'update Error',
+    message: 'Error has occure on update process',
+    detail:'Try Manual Updating: Help >> update'
+  })
+  /* console.error('There was a problem updating the application')
+  console.error(message) */
+})
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -147,32 +207,3 @@ app.on('activate', () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
 
-// setting auto aupdater
-
-const server = 'https://update.electronjs.org';
-const feed = `${server}/OWNER/REPO/${process.platform}-${process.arch}/${app.getVersion()}`;
-
-autoUpdater.setFeedURL(feed);
-
-setInterval(()=>{
-  autoUpdater.checkForUpdates()
-}, 10 * 60 * 1000);
-
-autoUpdater.on('update-downloaded',(event,releaseNotes, realseName)=>{
-  const dialogOpts ={
-    type: 'info',
-    buttons: ['Restart','Later'],
-    title: 'Application Update',
-    message: process.platform === 'win32' ? releaseNotes : releaseName,
-    detail: 'A new version has been downloaded. Restart the application to apply the updates.'
-  }
-
-  dialog.showMessageBox(dialogOpts).then((returnValue)=>{
-    if(returnValue.response === 0) autoUpdater.quitAndInstall()
-  })
-})
-
-autoUpdater.on('error', message =>{
-  console.error('There was a probel updating the appllication')
-  console.error(message)
-})

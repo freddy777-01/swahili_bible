@@ -102,5 +102,6 @@ src/Titles/
 
 #other files and files
 src/test.css
+src/test.js
 build_installer.js
 windows_installer/

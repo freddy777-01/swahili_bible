@@ -30,7 +30,7 @@ swich.addEventListener('click',(e)=>{
     /* Night Mode */
     if (document.querySelector('input[type=checkbox]').checked) {
         document.querySelector('body').style.backgroundColor ="black"
-        document.querySelector('body').style.color ="white"
+        document.querySelector('body').style.color ="white" //preselected was '#main'
         document.querySelector('#main nav #menu-icon').style.color ="white"
         document.querySelector('.btnMain-body label').innerHTML ="🌚"
     }else {
