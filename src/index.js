@@ -2,22 +2,48 @@ const { app, BrowserWindow, autoUpdater, Menu,dialog,Notification} = require('el
 const path = require('path');
 const fs = require('fs');
 //require('update-electron-app')()
+var cmd = process.argv[1];
+
+require('electron-nice-auto-reload')({
+  rootPath: path.join(process.cwd(),'src'),
+  rules: [
+    {
+      action:'script',
+      target: 'style\\.less',
+            // lessc src/css/style.less src/css/style.css
+            script: 'npm run less'
+    },
+    {
+      // relaunch the app while main process related js files
+      // were changed
+      action: 'app.relaunch',
+      target: 'preload\\.js|main\\.js'
+  }
+  ],
+  ignored: /node_modules/,
+  log: true,
+  devToolsReopen: true
+})
 
 /*require('electron-reload')(__dirname,{
   electron:path.join('../','node_modules','.bin','electron')
 })*/
 
 //Updater Values
-const server = 'https://vercel.com/freddy777-01/swahili-bible/96vMpSgGyWqt59qpLynpUHYrbE7c';
-const url = `${server}/update/${process.platform}/${app.getVersion()}`;
+//const server = 'https://swahili-bible.vercel.app';
+//const url = `${server}/update/${process.platform}/${app.getVersion()}`;
 
-autoUpdater.setFeedURL({url});
+//autoUpdater.setFeedURL({url});
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
   app.quit();
 }
 
+require('update-electron-app')({
+  repo: 'https://swahili-bible.vercel.app',
+  updateInterval: '5 minutes'
+})
 // icont for the App
 let icoPath = path.join(__dirname,'icons/swahili_bible.ico')
 const getIcon =()=>{
@@ -127,59 +153,9 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
         { role: 'close' },
       ])
     ]
-  },
-  {
-    label:'Help',
-    submenu:[
-      {
-        label: 'update',
-        click: autoUpdater.checkForUpdates()
-      }
-    ]
   }
 ]))
 
-setInterval(() => {
-  autoUpdater.checkForUpdates()
-}, 3000);
-
-autoUpdater.once('çhecking-for-update',()=>{
-  new Notification({
-    title: 'Updates',
-    icon: icoPath,
-    body: 'Swahili Bible is checking for updates'
-  })
-})
-autoUpdater.on('update-available',()=>{
-  new Notification({
-    title: 'Downloading Updates',
-    icon: icoPath,
-    body: 'Swahili Bible is Downloading updates'
-  })
-})
-autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
-  const dialogOpts = {
-    type: 'info',
-    buttons: ['Restart', 'Later'],
-    title: 'Application Update',
-    message: process.platform === 'win32' ? releaseNotes : releaseName,
-    detail: 'A new version has been downloaded. Restart the application to apply the updates.'
-  }
-
-  dialog.showMessageBox(dialogOpts).then((returnValue) => {
-    if (returnValue.response === 0) autoUpdater.quitAndInstall()
-  })
-})
-autoUpdater.on('error', message => {
-  dialog.showMessageBox({
-    type: 'error',
-    title: 'update Error',
-    message: 'Error has occure on update process',
-    detail:'Try Manual Updating: Help >> update'
-  })
-  /* console.error('There was a problem updating the application')
-  console.error(message) */
-})
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
