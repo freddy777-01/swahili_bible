@@ -29,11 +29,6 @@ require('electron-nice-auto-reload')({
   electron:path.join('../','node_modules','.bin','electron')
 })*/
 
-//Updater Values
-//const server = 'https://swahili-bible.vercel.app';
-//const url = `${server}/update/${process.platform}/${app.getVersion()}`;
-
-//autoUpdater.setFeedURL({url});
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
