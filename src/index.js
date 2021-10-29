@@ -36,7 +36,7 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 }
 
 require('update-electron-app')({
-  repo: 'https://swahili-bible.vercel.app',
+  repo: 'freddy777-01/swahili_bible',
   updateInterval: '5 minutes'
 })
 // icont for the App
@@ -131,8 +131,8 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
       {role:'zoomOut'},
       {role:'resetZoom'},
       {role:'togglefullscreen'},
-      {type:'separator'},
-      {role: 'toggleDevTools'}
+      {type:'separator'}
+     // {role: 'toggleDevTools'}
     ]
   },
   {
