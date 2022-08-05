@@ -1,55 +1,84 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
-    <title>Biblia</title>
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="assets/bootstrap.min.css">
-  </head>
-  <body>
+<html lang="en">
 
-    <div id="mySidenav" class="sidenav">
-      <span href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</span>
-      <div class="btnMain-body">
-        <div class="btn-body">
-            <div class="btn"></div>
-        </div>
-        <label for="ck">🌞</label>
-        <input type="checkbox" name="" id="ck">
+<head>
+  <title>Biblia Takatifu</title>
+  <link rel="shortcut icon" href="swahili_bible.ico" type="image/x-icon">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main-style.css">
+  <link rel="stylesheet" href="assets/css/tooltip.css">
+</head>
+
+<body>
+  <div class="testaments">
+    <div class="input-group">
+      <div class="vitabu-list d-flex flex-column">
+        <label for="vitabu">
+          Vitabu
+        </label>
+        <select class="form-select" id="vitabu">
+        </select>
+      </div>
+      <div class="sura-num d-flex flex-column mx-2">
+        <label for="sura">Sura</label>
+        <select class="form-select" id="sura">
+        </select>
+      </div>
     </div>
-    </div>
-<div id="main">
-  <nav class="nav nav-pills nav-stacked">
-    <img src="icons/menu-button.png" alt="" srcset="" id="menu-icon" onclick="openNav()">
-    <a class="nav-link" href="#">
-      <select name="vitabu" id="vitabu">
-      </select>
-    </a>
-    <a class="nav-link" href="#">
-      <label for="sura"> Sura</label>
-      <select name="sura" id="sura">
-      </select>
-    </a>
-    <a class="nav-link" href="#">
-      <label for="agano"> Agano</label>
-      <select name="agano" id="agano">
-        <option value="O">Agano la Kale</option>
+    <div class="agano-list d-flex flex-column">
+      <label for="agano">
+        Chagua Agano
+      </label>
+      <select class="form-select" id="agano">
+        <option value="O">Agano La kale</option>
         <option value="N">Agano Jipya</option>
       </select>
-    </a>
-    <!-- <a class="nav-link" href="#">Disabled link</a> -->
-  </nav>
-<div class="container">
-<section id="bible-content"></section>
-<textarea name="" id="" cols="70" rows="20"></textarea>
-</div>
+    </div>
+  </div>
+  <main class="main-body">
+    <section class="verse"></section>
+    <aside class="tools">
+      <div class="tools-fixed">
+        <div class="bible-tools">
+          <span class="add-to-bookmark btn" data-bs-toggle="tooltip" data-bs-placement="left" title="Add Bookmark">
+            <i class="fa fa-bookmark" aria-hidden="true"></i>
+          </span>
+          <span class="btn" data-bs-toggle="tooltip" data-bs-placement="left" title="View Bookmarks">
+            <i class="far fa-bookmark"></i>
+          </span>
+          <span class="open-note-book btn" data-bs-toggle="tooltip" data-bs-placement="left" title="Take Note"
+            onclick="openNoteBook()">
+            <i class="fas fa-edit"></i>
+          </span>
+        </div>
+        <div class="bible-setting">
+          <span class="btn" data-bs-toggle="tooltip" data-bs-placement="left" title="Night Mode">
+            <i class="fas fa-sun" aria-hidden="true"></i>
+            <!-- <i class="fas fa-moon"></i> -->
+          </span>
+        </div>
+        <div class="bible-credits">
+          <span class="btn" data-bs-toggle="tooltip" data-bs-placement="left" title="Credits">
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
+        </div>
+      </div>
+    </aside>
+  </main>
 
-</div>
-    <!-- javascripts -->
-    <script src="./renderer.js"></script>
-    <script src="assets/animated.js"></script>
-    <!-- <script src="assets/jquery.min.js"></script> -->
-  </body>
+  <!-- Scripts Start Here -->
+  <script crossorigin src="assets/js/jquery.min.js"></script>
+  <script crossorigin src="assets/js/bootstrap.bundle.min.js"></script>
+  <script crossorigin src="assets/fontawesome/js/all.min.js"></script>
+  <script crossorigin src="renderer.js"></script>
+
+  <script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+  </script>
+  <script crossorigin="" src="assets/js/animation2.js"></script>
+</body>
+
 </html>

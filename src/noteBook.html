@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoteBook</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/note-book-style.css">
+</head>
+
+<body>
+    <div class="title">
+
+        <p class="h2">Notebook</p>
+        <button class="btn" onclick="hideWin()" data-bs-toggle="tooltip" data-bs-placement="left" title="Close"><img
+                src="images/cancel_black_24dp.svg" alt=""></button>
+    </div>
+    <div class="note">
+        <!-- Alerts -->
+        <div class="alert alert-success alert-dismissible fade show">
+            <p>
+                <strong>Success!</strong> This alert box could indicate a successful or positive action.
+            </p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert">
+                <img src="images/close_black_24dp.svg" alt="">
+            </button>
+        </div>
+        <!--End Alerts -->
+        <div class="hide">
+            <div class="nav btn-group btn-group-sm">
+                <!-- <button type="button" class="btn btn-outline-danger close-note" onclick="takeNote()">Close</button> -->
+                <button type="button" class="btn btn-outline-primary" id="my-notes" onclick="showPanel(1)">My
+                    Notes</button>
+                <button type="button" class="btn btn-outline-info" id="take-note" onclick="showPanel(0)">Take
+                    Notes</button>
+                <button type="button" class="btn btn-outline-warning " id="read-note" onclick="showPanel(2)">Read
+                    Note</button>
+            </div>
+
+
+            <div class="note-body">
+                <div class="msg t-bold m-2"></div>
+                <div class="panel take-note">
+                    <div class="form-group">
+                        <label for="">Title</label>
+                        <input type="text" class="form-control form-control-sm" name="" id="note-title"
+                            aria-describedby="helpId" placeholder="Title For the Note">
+                        <small id="helpId" class="form-text text-muted">Enter Title of the Note</small>
+                    </div>
+                    <!-- <textarea name="" id="" cols="70" rows="20"></textarea> -->
+                    <textarea name="" class="p-2" id="note-content" cols="60" rows="10"
+                        placeholder="Write Notes"></textarea>
+                    <div class="note-footer">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-success" id="save-btn">Save</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel view-notes">
+                    <button type="button" class="btn btn-outline-danger btn-sm btn-block" onclick="toDeleteAll()"><i
+                            class="fas fa-trash-alt mr-2"></i>Delete all notes</button>
+                    <div class="view-notes-body"></div>
+                    <div class="view-notes-footer">
+                        <div class="t-bold m-2"></div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <pre class="read-notes">My Notes</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Scripts Start Here -->
+    <script crossorigin src="assets/js/jquery.min.js"></script>
+    <script crossorigin src="assets/js/bootstrap.bundle.min.js"></script>
+    <script crossorigin src="assets/fontawesome/js/all.min.js"></script>
+    <script crossorigin src="renderer-note-book.js"></script>
+    <script src="assets/js/animated.js"></script>
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
+</body>
+
+</html>

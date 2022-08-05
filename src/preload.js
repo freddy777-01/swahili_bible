@@ -1,14 +1,24 @@
-const path = require('path');
-const fs = require('fs');
+const { ipcRenderer, contextBridge } = require("electron");
+const bible = require("./bibleQuery");
+/*
+console.log(ipcRenderer.sendSync("synchronous-message", "ping"));
 
+ipcRenderer.on("asynchronous-reply", (_, ...args) => console.log(...args));
 
-// console.log(path.join(__dirname + '\\bibles\\','swahili_utf8.txt'))
-const bibleCont = exports.bibleCont = ()=>{
-    const fileN = path.join(__dirname + '\\Bibles\\','Swa2Bible.txt')
-   return fs.readFileSync(fileN);
-}
+ipcRenderer.send("asynchronous-message", "ping");
 
-const bibleTitle = exports.bibleTitle = ()=>{
-    const fileN = path.join(__dirname + '\\Titles\\','Swahili.txt')
-    return fs.readFileSync(fileN);
-}
+ipcRenderer
+  .invoke("invoke-handle-message", "ping")
+  .then((reply) => console.log(reply));
+*/
+contextBridge.exposeInMainWorld("get", {
+  oldTestamentTitles: () => bible.bible.oldTestamentTitles(),
+  newTestamentTitles: () => bible.bible.newTestamentTitles(),
+  getSura: (book) => bible.bible.tafutaSura(book),
+  getVerses: (book, suraNum) => bible.bible.bibleVerses(book, suraNum),
+});
+
+contextBridge.exposeInMainWorld("disclose", {
+  noteBook: () => ipcRenderer.send("win-status", { show: true }),
+  closeAllWin: () => ipcRenderer.send("close-all-win", null),
+});
