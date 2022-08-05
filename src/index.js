@@ -1,89 +1,70 @@
-const { app, BrowserWindow, autoUpdater, dialog} = require('electron');
-const path = require('path');
-const fs = require('fs');
-
-
-require('electron-reload')(__dirname,{
-  electron:path.join('../','node_modules','.bin','electron')
-})
-
-// Handle creating/removing shortcuts on Windows when installing/uninstalling.
-if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
-  app.quit();
-}
-
-const createWindow = () => {
-  // Create the browser window.
-  const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    webPreferences:{
-      nodeIntegration:true,
-      // enableRemoteModule:true,
-      preload:path.join(__dirname,'preload.js')
-    }
-  });
-
-  let webCont = mainWindow.webContents;
-  // and load the index.html of the app.
-  mainWindow.loadFile(path.join(__dirname, 'index.html'));
-  
-  // Open the DevTools.
-  // mainWindow.webContents.openDevTools();
-
-};
+const { app, BrowserWindow, ipcMain } = require("electron");
+const path = require("path");
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready',createWindow);
+// app.on('ready',createWindow);
+// icont for the App
+let icoPath = path.join(__dirname, "icons/swahili_bible.ico");
+const getIcon = () => {
+  if ((process.platform = "win32"))
+    return path.join(__dirname, "icons/swahili_bible.ico");
+  return path.join(__dirname, "icons/swahili_bible.png");
+};
+app.whenReady().then(() => {
+  const mainWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    icon: getIcon(),
+    minWidth: 1240,
+    minHeight: 600,
+    show: false,
+    webPreferences: {
+      nodeIntegration: false,
+      contextIsolation: true,
+      preload: path.join(__dirname, "preload.js"),
+    },
+  });
+
+  const noteBook = new BrowserWindow({
+    width: 600,
+    height: 600,
+    frame: true,
+    show: true,
+    minWidth: 610,
+    autoHideMenuBar: false,
+    webPreferences: {
+      nodeIntegration: false,
+      contextIsolation: true,
+      preload: path.join(__dirname, "preload-note-book.js"),
+    },
+  });
+  noteBook.loadFile(path.join(__dirname, "noteBook.html"));
+
+  mainWindow.loadFile(path.join(__dirname, "index.html"));
+  ipcMain.on("win-status", (event, args) => {
+    // console.log(args.show);
+    if (args.show) {
+      noteBook.show();
+    } else {
+      noteBook.hide();
+    }
+  });
+  ipcMain.on("close-all-win", (event, args) => {
+    // console.log(args.show);
+    noteBook.close();
+    setTimeout(() => {
+      mainWindow.close();
+    }, 1000);
+  });
+});
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
+app.on("window-all-closed", () => {
+  if (process.platform !== "darwin") {
     app.quit();
   }
 });
-
-app.on('activate', () => {
-  // On OS X it's common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
-  if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow();
-  }
-});
-
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and import them here.
-
-// setting auto aupdater
-
-const server = 'https://update.electronjs.org';
-const feed = `${server}/OWNER/REPO/${process.platform}-${process.arch}/${app.getVersion()}`;
-
-autoUpdater.setFeedURL(feed);
-
-setInterval(()=>{
-  autoUpdater.checkForUpdates()
-}, 10 * 60 * 1000);
-
-autoUpdater.on('update-downloaded',(event,releaseNotes, realseName)=>{
-  const dialogOpts ={
-    type: 'info',
-    buttons: ['Restart','Later'],
-    title: 'Application Update',
-    message: process.platform === 'win32' ? releaseNotes : releaseName,
-    detail: 'A new version has been downloaded. Restart the application to apply the updates.'
-  }
-
-  dialog.showMessageBox(dialogOpts).then((returnValue)=>{
-    if(returnValue.response === 0) autoUpdater.quitAndInstall()
-  })
-})
-
-autoUpdater.on('error', message =>{
-  console.error('There was a probel updating the appllication')
-  console.error(message)
-})

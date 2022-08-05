@@ -1,0 +1,114 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Testametnts and chapters*/
+.testaments{
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+padding: 5px 1rem 0 1rem;
+position: fixed;
+top: 0;
+background-color: white;
+width: 95%;
+z-index: 1;
+/* border: 2px solid yellow; */
+}
+.testaments .input-group{
+    width: 30rem;
+    border: 2px green;
+}
+.testaments .agano-list{
+    align-self: center;
+    /* border: 2px solid red; */
+}
+/* End of Testaments and chapters */
+
+
+ /* Main body */
+ .main-body{
+    display: flex;
+    flex-direction: row;
+}
+.main-body .verse{
+    width: 95%;
+    padding: 5rem 1rem 1rem 1rem;
+    /* color: rgb(214, 214, 214); */
+}
+ /* End of Main Body */
+
+/* Tools: bookmark and note taking */
+.main-body .tools{
+    padding: 1rem 5px 0px 5px;
+    width: 5%;
+    border-left: 1px solid rgb(255, 84, 226);
+    /* box-shadow: 0 4px 8px 0 rgba(255, 42, 237, 0.19), 0 6px 20px 0 rgba(255, 0, 234, 0.19); */
+    position: relative;
+}
+.main-body .tools .tools-fixed{
+    position: fixed;
+}
+.tools .tools-fixed span{
+    cursor: pointer;
+}
+.tools .tools-fixed .bible-setting{
+    /* border: 2px solid red; */
+    height: 10rem;
+    position: relative;
+}
+.tools .tools-fixed .bible-setting span{
+    position: absolute;
+    top: 4rem;
+}
+.tools .tools-fixed .bible-credits{
+    /* border: 2px solid red; */
+    height: 15rem;
+    position: relative;
+}
+.tools .tools-fixed .bible-credits span{
+    position: absolute;
+    bottom: 0;
+    font-size: 25px;
+}
+.tools .tools-fixed span:hover{
+    box-shadow: 0 4px 8px 0 rgba(255, 42, 237, 0.19), 0 6px 20px 0 rgba(255, 0, 234, 0.19);
+}
+/* End Tools bookmark and note taking */
+
+/* Customizing scroll bar */
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(255, 84, 226);
+    border-radius: 13px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(255, 43, 255);
+    border-radius: 10px;
+  }
+  /* End Customizing scroll bar */
+
+/* classes for animation */
+.whiteColor{
+    color: white;
+}
+.boxShadow:hover{
+    box-shadow: 0 4px 8px 0 rgba(255, 222, 252, 0.19), 0 6px 20px 0 rgba(255, 255, 255, 0.19);
+
+}
+.dark{
+    color: white;
+    background-color: rgb(80, 79, 79);
+}
+/* End classes for animation */
