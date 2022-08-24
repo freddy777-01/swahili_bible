@@ -13,21 +13,27 @@
 
 <body>
     <div class="title">
-
+        <div class="bible-setting">
+            <span class="btn" data-bs-toggle="tooltip" data-bs-placement="left" title="Night Mode">
+                <i class="fas fa-sun" aria-hidden="true"></i>
+                <!-- <i class="fas fa-moon"></i> -->
+            </span>
+        </div>
         <p class="h2">Notebook</p>
         <button class="btn" onclick="hideWin()" data-bs-toggle="tooltip" data-bs-placement="left" title="Close"><img
                 src="images/cancel_black_24dp.svg" alt=""></button>
     </div>
     <div class="note">
         <!-- Alerts -->
-        <div class="alert alert-success alert-dismissible fade show">
+        <div class="alert-container"></div>
+        <!-- <div class="alert alert-success alert-dismissible fade show">
             <p>
                 <strong>Success!</strong> This alert box could indicate a successful or positive action.
             </p>
             <button type="button" class="btn-close" data-bs-dismiss="alert">
                 <img src="images/close_black_24dp.svg" alt="">
             </button>
-        </div>
+        </div> -->
         <!--End Alerts -->
         <div class="hide">
             <div class="nav btn-group btn-group-sm">
@@ -44,31 +50,30 @@
             <div class="note-body">
                 <div class="msg t-bold m-2"></div>
                 <div class="panel take-note">
-                    <div class="form-group">
-                        <label for="">Title</label>
-                        <input type="text" class="form-control form-control-sm" name="" id="note-title"
-                            aria-describedby="helpId" placeholder="Title For the Note">
-                        <small id="helpId" class="form-text text-muted">Enter Title of the Note</small>
-                    </div>
-                    <!-- <textarea name="" id="" cols="70" rows="20"></textarea> -->
-                    <textarea name="" class="p-2" id="note-content" cols="60" rows="10"
-                        placeholder="Write Notes"></textarea>
-                    <div class="note-footer">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-success" id="save-btn">Save</button>
+                    <form action="#">
+                        <div class="form-group">
+                            <label for="">Title</label>
+                            <input type="text" class="form-control form-control-sm" name="title" id="note-title"
+                                aria-describedby="helpId" placeholder="Title For the Note" required>
+                            <small id="helpId" class="form-text text-muted">Enter Title of the Note</small>
                         </div>
-                    </div>
+                        <!-- <textarea name="" id="" cols="70" rows="20"></textarea> -->
+                        <textarea name="notes" class="p-2" id="note-content" cols="60" rows="10"
+                            placeholder="Write Notes" required></textarea>
+                        <div class="note-footer">
+                            <div class="btn-group">
+                                <button type="submit" class="btn btn-success" id="save-btn">Save</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
                 <div class="panel view-notes">
-                    <button type="button" class="btn btn-outline-danger btn-sm btn-block" onclick="toDeleteAll()"><i
+                    <button type="button" class="btn btn-outline-danger btn-sm btn-block delete-notes"><i
                             class="fas fa-trash-alt mr-2"></i>Delete all notes</button>
                     <div class="view-notes-body"></div>
-                    <div class="view-notes-footer">
-                        <div class="t-bold m-2"></div>
-                    </div>
                 </div>
                 <div class="panel">
-                    <pre class="read-notes">My Notes</pre>
+                    <div class="read-notes"></div>
                 </div>
             </div>
         </div>
@@ -77,8 +82,8 @@
     <script crossorigin src="assets/js/jquery.min.js"></script>
     <script crossorigin src="assets/js/bootstrap.bundle.min.js"></script>
     <script crossorigin src="assets/fontawesome/js/all.min.js"></script>
-    <script crossorigin src="renderer-note-book.js"></script>
     <script src="assets/js/animated.js"></script>
+    <script crossorigin src="renderer-note-book.js"></script>
     <script>
         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
         var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {

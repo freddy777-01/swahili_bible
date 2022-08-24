@@ -45,9 +45,10 @@
     }
   },
   "dependencies": {
+    "better-sqlite3": "^7.6.2",
+    "edit-json-file": "^1.7.0",
     "electron-squirrel-startup": "^1.0.0",
     "jshint": "^2.13.1",
-    "sqlite3": "^5.0.11",
     "update-electron-app": "^2.0.1"
   },
   "devDependencies": {
