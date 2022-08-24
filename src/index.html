@@ -36,34 +36,84 @@
       </select>
     </div>
   </div>
-  <main class="main-body">
-    <section class="verse"></section>
-    <aside class="tools">
-      <div class="tools-fixed">
-        <div class="bible-tools">
-          <span class="add-to-bookmark btn" data-bs-toggle="tooltip" data-bs-placement="left" title="Add Bookmark">
-            <i class="fa fa-bookmark" aria-hidden="true"></i>
-          </span>
-          <span class="btn" data-bs-toggle="tooltip" data-bs-placement="left" title="View Bookmarks">
-            <i class="far fa-bookmark"></i>
-          </span>
-          <span class="open-note-book btn" data-bs-toggle="tooltip" data-bs-placement="left" title="Take Note"
-            onclick="openNoteBook()">
-            <i class="fas fa-edit"></i>
-          </span>
+  <main>
+    <!-- Alerts -->
+    <div class="alert-container">
+      <!-- <div class="alert alert-success alert-dismissible fade show">
+        <p>
+          <strong>Success!</strong> This alert box could indicate a successful or positive action.
+        </p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert">
+          <img src="images/close_black_24dp.svg" alt="">
+        </button>
+      </div> -->
+    </div>
+
+    <div class="main-body">
+
+      <section class="verse"></section>
+
+      <!-- right side tools tab -->
+      <aside class="tools">
+        <div class="tools-fixed">
+          <div class="bible-tools">
+            <span class="add-to-bookmark btn" data-bs-toggle="tooltip" data-bs-placement="left" title="Add Bookmark">
+              <i class="fa fa-bookmark" aria-hidden="true"></i>
+            </span>
+            <span class="btn" data-bs-toggle="tooltip" data-bs-placement="left" title="View Bookmarks">
+              <i class="far fa-bookmark"></i>
+            </span>
+            <span class="open-note-book btn" data-bs-toggle="tooltip" data-bs-placement="left" title="Take Note"
+              onclick="openNoteBook()">
+              <i class="fas fa-edit"></i>
+            </span>
+          </div>
+          <div class="bible-setting">
+            <span class="btn" data-bs-toggle="tooltip" data-bs-placement="left" title="Night Mode">
+              <i class="fas fa-sun" aria-hidden="true"></i>
+              <!-- <i class="fas fa-moon"></i> -->
+            </span>
+          </div>
+          <div class="bible-credits">
+            <span class="btn" data-bs-toggle="tooltip" data-bs-placement="left" title="Credits">
+              <i class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
+          </div>
         </div>
-        <div class="bible-setting">
-          <span class="btn" data-bs-toggle="tooltip" data-bs-placement="left" title="Night Mode">
-            <i class="fas fa-sun" aria-hidden="true"></i>
-            <!-- <i class="fas fa-moon"></i> -->
-          </span>
-        </div>
-        <div class="bible-credits">
-          <span class="btn" data-bs-toggle="tooltip" data-bs-placement="left" title="Credits">
-            <i class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
+      </aside>
+      <!-- end right side tools tab -->
+    </div>
+
+    <!--Contact Me Modal -->
+    <div class="modial" id="contact-modal" onmousedown="return false" onselect="return false">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div id="msg-box"></div>
+            <h5 class="modal-title">Credits</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body p-3">
+            <p class="text-center">
+              Am glad you found it, enjoy putting your self closer to GOD🌟.<br />
+              As other Bible applications exist for other devices, know you get it on your computer.
+              I have faith with tools build with it will help you enjoy your time reading the scriptures.<br />
+              A gain thank GOD you found it 🎉 🙏
+            </p>
+            <h6>Feedback ?, Contact Me</h6>
+            <p class="" style="text-align: center;">
+              <ul class="" style="list-style-type: none; font-size: x-large; text-align: center;">
+                <li><i class="fa fa-envelope mr-2   "></i>fred45722@gmail.com</li>
+                <li><kbd>Telegram<sup><i class="fab fa-telegram-plane mr-2   "></i></sup></kbd> +255789925268</li>
+              </ul>
+            </p>
+          </div>
         </div>
       </div>
-    </aside>
+    </div>
+
+
   </main>
 
   <!-- Scripts Start Here -->
@@ -71,6 +121,7 @@
   <script crossorigin src="assets/js/bootstrap.bundle.min.js"></script>
   <script crossorigin src="assets/fontawesome/js/all.min.js"></script>
   <script crossorigin src="renderer.js"></script>
+  <script crossorigin="" src="assets/js/animated.js"></script>
 
   <script>
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -78,7 +129,6 @@
       return new bootstrap.Tooltip(tooltipTriggerEl)
     })
   </script>
-  <script crossorigin="" src="assets/js/animation2.js"></script>
 </body>
 
 </html>

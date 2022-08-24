@@ -35,6 +35,28 @@ z-index: 1;
     display: flex;
     flex-direction: row;
 }
+.alert{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+position: absolute;
+right: 6rem;
+top: 1rem;
+z-index: 1;
+padding: 0.4rem;
+}
+.alert button{
+    border: none;
+    background: none;
+    margin: 0 0 0 1rem;
+    height: 1.2rem;
+    width: 1.2rem;
+}
+.note .alert button img{
+    width: inherit;
+    height: inherit;
+}
+
 .main-body .verse{
     width: 95%;
     padding: 5rem 1rem 1rem 1rem;
@@ -99,6 +121,43 @@ z-index: 1;
   }
   /* End Customizing scroll bar */
 
+
+/* MODAL CSS */
+.modial{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+.modial .modal-header button{
+  background: none;
+  border: none;
+  padding: 15;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 26px;
+  border-radius: 20%;
+}
+.modial .modal-header button:hover{
+  font-weight: 600;
+}
+/* Animation for Modal */
+@keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+/* END OF MODAL CSS */
+
 /* classes for animation */
 .whiteColor{
     color: white;
@@ -110,5 +169,8 @@ z-index: 1;
 .dark{
     color: white;
     background-color: rgb(80, 79, 79);
+}
+.d-block{
+    display: block;
 }
 /* End classes for animation */
