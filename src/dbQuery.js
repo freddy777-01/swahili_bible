@@ -1,6 +1,6 @@
-const dbcon = require("./db");
+const { dbcon } = require("./db");
 
-const notes = (exports.notes = {
+exports.notes = {
   saveNote: (title, note, date, deleted) => {
     let tm =
       new Date().getHours() +
@@ -8,7 +8,7 @@ const notes = (exports.notes = {
       new Date().getMinutes() +
       ":" +
       new Date().getSeconds();
-    const stmt = dbcon.dbcon.prepare(
+    const stmt = dbcon.prepare(
       "INSERT INTO mynotes(title,notes,created_at,deleted) VALUES(?,?,?,?)"
     );
     return stmt.run(title, note, `${date} Time-${tm}`, deleted);
@@ -21,49 +21,55 @@ const notes = (exports.notes = {
     //   results = rows;
     // });
     // console.log(stmt.all());
-    return dbcon.dbcon.prepare("SELECT * FROM mynotes").all();
+    return dbcon.prepare("SELECT * FROM mynotes").all();
   },
   readNote: (id) => {
-    return dbcon.dbcon
+    return dbcon
       .prepare("SELECT title,notes FROM mynotes WHERE id=?")
       .all(`${id}`);
   },
   deleteANote: (id) => {
-    const stmt = dbcon.dbcon.prepare("DELETE FROM mynotes WHERE id = ?");
+    const stmt = dbcon.prepare("DELETE FROM mynotes WHERE id = ?");
     return stmt.run(id);
   },
   deleteAllNotes: () => {
-    return dbcon.dbcon.prepare("DELETE FROM mynotes").run();
+    return dbcon.prepare("DELETE FROM mynotes").run();
   },
-});
+};
 
 exports.highlighter = {
   highlight: (key, color) => {
-    const stmt = dbcon.dbcon.prepare(
+    const stmt = dbcon.prepare(
       "INSERT INTO highlights(address,colors) VALUES(?,?)"
     );
     return stmt.run(key, color);
   },
   getHighlight: (key) => {
-    return dbcon.dbcon
-      .prepare("SELECT * FROM highlights WHERE address = ?")
-      .get(key);
+    return dbcon.prepare("SELECT * FROM highlights WHERE address = ?").get(key);
   },
   updateHighlight: (key, color) => {
-    return dbcon.dbcon
+    return dbcon
       .prepare(
         `UPDATE highlights SET colors='${color}' WHERE address = '${key}'`
       )
       .run();
   },
   allHighlights: (key) => {
-    return dbcon.dbcon
-      .prepare("SELECT * FROM highlights WHERE address = ?")
-      .all(key);
+    return dbcon.prepare("SELECT * FROM highlights WHERE address = ?").all(key);
   },
   deHighlight: (key) => {
-    return dbcon.dbcon
-      .prepare("DELETE FROM highlights WHERE address=?")
-      .run(key);
+    return dbcon.prepare("DELETE FROM highlights WHERE address=?").run(key);
+  },
+};
+
+exports.bookmarking = {
+  addBkmk: (bkmk) => {
+    return dbcon.prepare("INSERT INTO bookmarks(bookmark) VALUES(?)").run(bkmk);
+  },
+  getBkmks: () => {
+    return dbcon.prepare("SELECT * FROM bookmarks").all();
+  },
+  deleteBkmk: (id) => {
+    return dbcon.prepare("DELETE FROM bookmarks WHERE id =?").run(id);
   },
 };

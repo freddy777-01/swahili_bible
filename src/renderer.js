@@ -3,11 +3,15 @@
 // No Node.js APIs are available in this process because
 // `nodeIntegration` is turned off. Use `preload.js` to
 // selectively enable features needed in the rendering
+
 // process.
 const vitabu = document.querySelector(".input-group .vitabu-list #vitabu");
 const sura = document.querySelector(".input-group .sura-num #sura");
 const versesView = document.querySelector(".main-body .verse");
-const maagano = document.querySelector(".agano-list #agano");
+const agano = document.querySelector(".agano-list #agano");
+const bkmkBody = document.querySelector(
+  ".bookmark-modal .modal-content .modal-body"
+);
 const clearBibleView = () => (versesView.innerHTML = "");
 let tempBookNum, tempSuraNum;
 
@@ -25,7 +29,7 @@ const alertFunction = (message, type, status) => {
     </div>`
   );
   setTimeout(() => {
-    $(".note .alert-container").html("");
+    $(".alert-container").html("");
   }, 2000);
 };
 
@@ -58,8 +62,8 @@ const getBibleVerses = (book, suraNum) => {
 };
 
 const getSuraForBook = (kitabuNum) => {
-  let sur = bible.getSura(kitabuNum);
-  sur.forEach((el) => {
+  sura.innerHTML = "";
+  bible.getSura(kitabuNum).forEach((el) => {
     sura.innerHTML += `<option value="${el}">${el}</option>`;
   });
   getBibleVerses(vitabu.value, sura.value);
@@ -94,6 +98,7 @@ $(".input-group .sura-num #sura").change(function (e) {
 //   getBibleVerses(vitabu.value, sura.value);
 // });
 
+//The below code listens to change of agano dropdown menu change
 $(".agano-list #agano").change(function (e) {
   if (e.target.value === "N") getNewTestaments();
   else getOldTestaments();
@@ -111,8 +116,12 @@ const openNoteBook = () => {
   disclose.noteBook();
 };
 
-/* *** highlighting functionality *** */
+/**
+ *I have used "function" keyword do declare the below functions in order to use javascript's
+ *Hoisting functionality, which allows to call a function before it's declaration
+ */
 
+/* *** highlighting functionality *** */
 function highlightColor(key, color = null) {
   let verses = document.querySelectorAll(".verse .verse-content");
   verses.forEach((verse) => {
@@ -149,6 +158,81 @@ $(document).on("click", ".colors", (e) => {
 });
 
 /* *** End of highlighting functionality*** */
+
+/* *** Bookmarking *** */
+function getBookmarks() {
+  bkmkBody.innerHTML = "";
+  let tempBkmk = bookmark.getbkmks();
+  if (tempBkmk.length > 0) {
+    tempBkmk.forEach((bk) => {
+      let tempBkmk = [];
+      tempBkmk.slice(0, tempBkmk.length);
+      tempBkmk.push(JSON.parse(bk.bookmark).Kitabu);
+      tempBkmk.push(JSON.parse(bk.bookmark).Sura);
+      tempBkmk.push(JSON.parse(bk.bookmark).Agano);
+
+      bkmkBody.innerHTML += `
+      <div class="bookmark">
+      <div class="bk-text" onclick="viewBook(this)" data-bkmk ="${tempBkmk}">
+      ${bible.getTitleName(JSON.parse(bk.bookmark).Kitabu)}; Sura: ${
+        JSON.parse(bk.bookmark).Sura
+      }</div>
+      <div class="trash" data-id="${
+        bk.id
+      }" onclick="deleteBkmk(this)"><i class="fas fa-trash-alt mr-2"></i></div>
+      </div>`;
+    });
+  } else {
+    bkmkBody.innerHTML = `<div>Bookmarks not found</div>`;
+  }
+}
+getBookmarks();
+$(".add-to-bookmark").click(function (e) {
+  e.preventDefault();
+  let bkObj = {
+    Kitabu: vitabu.value,
+    Sura: sura.value,
+    Agano: agano.value,
+  };
+  if (bookmark.addbkmk(`${JSON.stringify(bkObj)}`).changes > 0) {
+    alertFunction("Bookmark Added", "success", "succcess");
+    getBookmarks();
+  }
+});
+const viewBook = (el) => {
+  let j = el.dataset.bkmk;
+  let kitabu = j[0] + "" + j[1],
+    sra,
+    agno;
+  if (j.length == 8) {
+    sra = j[3] + "" + j[4] + "" + j[5];
+    agno = j[7];
+  }
+  if (j.length == 7) {
+    sra = j[3] + "" + j[4];
+    agno = j[6];
+  }
+  if (j.length == 6) {
+    sra = j[3];
+    agno = j[5];
+  }
+
+  agano.value = agno;
+  agno === "N" ? getNewTestaments() : getOldTestaments();
+  getSuraForBook(kitabu);
+  vitabu.value = kitabu;
+  sura.value = sra;
+  getBibleVerses(kitabu, sra);
+};
+const deleteBkmk = (el) => {
+  if (bookmark.deletebkmk(el.dataset.id).changes > 0) {
+    alertFunction("Bookmark Deleted", "success", "succcess");
+    getBookmarks();
+  } else {
+    alertFunction("Try Again", "danger", "failed");
+  }
+};
+/* *** End Bookmarking *** */
 
 /**
  * The "window.onbeforeunload" function override the closing window functionality

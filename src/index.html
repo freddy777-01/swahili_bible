@@ -39,19 +39,31 @@
   <main>
     <!-- Alerts -->
     <div class="alert-container">
-      <!-- <div class="alert alert-success alert-dismissible fade show">
-        <p>
-          <strong>Success!</strong> This alert box could indicate a successful or positive action.
-        </p>
-        <button type="button" class="btn-close" data-bs-dismiss="alert">
-          <img src="images/close_black_24dp.svg" alt="">
-        </button>
-      </div> -->
     </div>
+    <!-- End of Alerts -->
 
     <div class="main-body">
 
       <section class="verse"></section>
+
+      <!-- sidbar bookmark nav -->
+      <div class="bookmark-list">
+        <div class="bookmark-modal " role=" document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Bookmarks</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="bookmark">Content</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- end sidbar bookmark nav -->
 
       <!-- right side tools tab -->
       <aside class="tools">
@@ -60,7 +72,7 @@
             <span class="add-to-bookmark btn" data-bs-toggle="tooltip" data-bs-placement="left" title="Add Bookmark">
               <i class="fa fa-bookmark" aria-hidden="true"></i>
             </span>
-            <span class="btn" data-bs-toggle="tooltip" data-bs-placement="left" title="View Bookmarks">
+            <span class="open-bookmark btn" data-bs-toggle="tooltip" data-bs-placement="left" title="View Bookmarks">
               <i class="far fa-bookmark"></i>
             </span>
             <span class="open-note-book btn" data-bs-toggle="tooltip" data-bs-placement="left" title="Take Note"

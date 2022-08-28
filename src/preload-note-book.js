@@ -1,5 +1,6 @@
 const { ipcRenderer, contextBridge } = require("electron");
-const notes = require("./dbQuery");
+// import { notes } from "./dbQuery";
+const { notes } = require("./dbQuery");
 const editJsonFile = require("edit-json-file");
 let file = editJsonFile(`${__dirname}/settings/setting.json`, {
   autosave: true,
@@ -14,10 +15,10 @@ contextBridge.exposeInMainWorld("win", {
 });
 // notes.notes.getNotes()
 contextBridge.exposeInMainWorld("notes", {
-  getNotes: () => notes.notes.getNotes(),
-  readNote: (id) => notes.notes.readNote(id),
+  getNotes: () => notes.getNotes(),
+  readNote: (id) => notes.readNote(id),
   saveNote: (title, note, date, deleted) =>
-    notes.notes.saveNote(title, note, date, deleted),
-  deleteANote: (id) => notes.notes.deleteANote(id),
-  deleteAllNotes: () => notes.notes.deleteAllNotes(),
+    notes.saveNote(title, note, date, deleted),
+  deleteANote: (id) => notes.deleteANote(id),
+  deleteAllNotes: () => notes.deleteAllNotes(),
 });

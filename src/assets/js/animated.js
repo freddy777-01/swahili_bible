@@ -5,8 +5,10 @@ const bodyClassToggler = () => {
   $("body").delay("5000").fadeIn().toggleClass("dark");
   $(".tools-fixed span").toggleClass("whiteColor boxShadow");
   $(".testaments").toggleClass("dark");
-  // $(".note").toggleClass("dark");
   $(".note-body form input,.note-body form textarea").toggleClass("dark");
+  $(".bookmark-modal .modal-content,.modal-dialog .modal-content").toggleClass(
+    "bgDark"
+  );
 };
 $(".bible-setting .btn").click(function () {
   if (nightMode == false) {
@@ -32,6 +34,20 @@ $(".bible-credits .btn").click(function (e) {
 $(".modial .modal-header .close").click(function (e) {
   e.preventDefault();
   $(".modial").toggleClass("d-block");
+});
+
+// opening bookmark
+$(".tools .bible-tools .open-bookmark").click(function (e) {
+  e.preventDefault();
+  $(".bookmark-list").toggleClass("d-block");
+  $(".bookmark-modal").toggleClass("bookmark-box-animate");
+  // console.log("opening bookmark");
+});
+// closing bookmark
+$(".bookmark-modal button").click(function (e) {
+  e.preventDefault();
+  $(".bookmark-list").toggleClass("d-block");
+  $(".bookmark-modal").toggleClass("bookmark-box-animate");
 });
 /* End Of Modals */
 

@@ -34,6 +34,7 @@ z-index: 1;
  .main-body{
     display: flex;
     flex-direction: row;
+    position: relative;
 }
 .alert{
 display: flex;
@@ -158,6 +159,63 @@ padding: 0.4rem;
 }
 /* END OF MODAL CSS */
 
+/* side nav for bookmarks */
+
+.bookmark-list{
+    display: none;
+    position: absolute;
+    width: 95%;
+    height: 100%;
+    z-index: 0;
+    top: 5rem;
+    background-color: rgba(22, 22, 22, 0.4); /* Black w/ opacity */
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+}
+.bookmark-modal{
+    position: fixed;
+    width: 26rem;
+    right: 5rem;
+    top: 7rem;
+    overflow: auto;
+    /* display: none; */
+    /* transform-origin: right; */
+    transform: translateX(30rem);
+    transform: scale(0);
+}
+.bookmark-box-animate{
+    transform: scale(1);
+    animation: animateBkmk 1s ease-in-out;
+}
+@keyframes animateBkmk {
+    0%   { transform: scale(1,1)    translateX(0); }
+    10%  { transform: scale(1.1,.9) translateX(0); }
+    30%  { transform: scale(.9,1.1) translateX(-100px); }
+    50%  { transform: scale(1,1)    translateX(0); }
+    57%  { transform: scale(1,1)    translateX(-7px); }
+    64%  { transform: scale(1,1)    translateX(0); }
+    100% { transform: scale(1,1)    translateX(0); }
+  }
+.bookmark-modal .bookmark{
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+.bookmark-modal .bookmark:hover{
+    background: rgb(223, 223, 223);
+}
+.bookmark-modal .bookmark .bk-text,.bookmark-modal .bookmark .trash{
+    padding: 5px;
+}
+.bookmark-modal .bookmark .bk-text:hover{
+    background: rgb(187, 187, 187);
+}
+.bookmark-modal .bookmark .trash:hover{
+    color: rgb(255, 64, 64);
+}
+
+/* End Side nav for bookmarks */
+
 /* classes for animation */
 .whiteColor{
     color: white;
@@ -169,6 +227,9 @@ padding: 0.4rem;
 .dark{
     color: white;
     background-color: rgb(80, 79, 79);
+}
+.bgDark{
+    background: rgb(80, 79, 79);
 }
 .d-block{
     display: block;

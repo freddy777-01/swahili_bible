@@ -1,14 +1,11 @@
 const path = require("path");
 const Database = require("better-sqlite3");
-const dbcon = (exports.dbcon = new Database(
-  path.join(__dirname + "/db/", "notes.db"),
-  {
-    fileMustExist: true,
-  }
-));
-if (dbcon) {
+exports.dbcon = new Database(path.join(__dirname + "/db/", "notes.db"), {
+  fileMustExist: true,
+});
+/* if (dbcon) {
   console.log("Db Exists");
-} else console.log("error");
+} else console.log("error"); */
 // const dbcon = (exports.dbcon = new sqlite3.Database(
 //   path.join(__dirname + "/db/", "notes.db"),
 //   (err) => {

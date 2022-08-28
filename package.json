@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "description": "Desktop SWAHILI BIBLE Application",
   "main": "src/index.js",
+  "config.forge": "src/forge.config.js",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
@@ -19,26 +20,47 @@
   "license": "MIT",
   "config": {
     "forge": {
-      "packagerConfig": {},
+      "packagerConfig": {
+        "extecutableName": "Swahili Bible",
+        "overwrite": true,
+        "asar": false,
+        "icon": "src/icons/swahili_bible.png"
+      },
+      "publishers": [
+        {
+          "name": "@electron-forge/publisher-github",
+          "config": {
+            "repository": {
+              "owner": "freddy777-01",
+              "name": "swahili_bible"
+            },
+            "prerelease": false,
+            "draft": true
+          }
+        }
+      ],
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "swahili_bible"
+            "name": "Swahili_Bible",
+            "setupExe": "Swahili Bible.exe",
+            "setupIcon": "src/icons/swahili_bible.ico",
+            "author": "FEMAG",
+            "noMsi": false,
+            "setupMsi": "Swahili Bible"
           }
         },
         {
           "name": "@electron-forge/maker-zip",
           "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
+            "darwin",
+            "linux"
+          ],
           "config": {}
         },
         {
-          "name": "@electron-forge/maker-rpm",
+          "name": "@electron-forge/maker-deb",
           "config": {}
         }
       ]
@@ -52,11 +74,12 @@
     "update-electron-app": "^2.0.1"
   },
   "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.54",
-    "@electron-forge/maker-deb": "^6.0.0-beta.54",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
-    "@electron-forge/maker-zip": "^6.0.0-beta.54",
+    "@electron-forge/cli": "^6.0.0-beta.65",
+    "@electron-forge/maker-deb": "^6.0.0-beta.65",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.65",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.65",
+    "@electron-forge/maker-zip": "^6.0.0-beta.65",
+    "@electron-forge/publisher-github": "^6.0.0-beta.65",
     "electron": "11.1.1"
   }
 }
