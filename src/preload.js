@@ -1,6 +1,6 @@
 const { ipcRenderer, contextBridge } = require("electron");
-const bible = require("./bibleQuery");
-const { highlighter } = require("./dbQuery");
+const { bible } = require("./bibleQuery");
+const { highlighter, bookmarking } = require("./dbQuery");
 /*
 console.log(ipcRenderer.sendSync("synchronous-message", "ping"));
 
@@ -13,10 +13,11 @@ ipcRenderer
   .then((reply) => console.log(reply));
 */
 contextBridge.exposeInMainWorld("bible", {
-  getOldTestamentTitles: () => bible.bible.oldTestamentTitles(),
-  getNewTestamentTitles: () => bible.bible.newTestamentTitles(),
-  getSura: (book) => bible.bible.tafutaSura(book),
-  getVerses: (book, suraNum) => bible.bible.bibleVerses(book, suraNum),
+  getOldTestamentTitles: () => bible.oldTestamentTitles(),
+  getNewTestamentTitles: () => bible.newTestamentTitles(),
+  getSura: (book) => bible.tafutaSura(book),
+  getVerses: (book, suraNum) => bible.bibleVerses(book, suraNum),
+  getTitleName: (titleNum) => bible.titleName(titleNum),
 });
 
 contextBridge.exposeInMainWorld("disclose", {
@@ -30,4 +31,10 @@ contextBridge.exposeInMainWorld("highlighter", {
   allHighlights: (key) => highlighter.allHighlights(key),
   updateHighlight: (key, color) => highlighter.updateHighlight(key, color),
   deHighlight: (key) => highlighter.deHighlight(key),
+});
+
+contextBridge.exposeInMainWorld("bookmark", {
+  addbkmk: (bkmk) => bookmarking.addBkmk(bkmk),
+  getbkmks: () => bookmarking.getBkmks(),
+  deletebkmk: (id) => bookmarking.deleteBkmk(id),
 });

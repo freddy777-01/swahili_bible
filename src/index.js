@@ -119,9 +119,9 @@ Menu.setApplicationMenu(
     {
       label: "View",
       submenu: [
-        /*    { role: "reload" },
+        /*{ role: "reload" },
         { role: "forceReload" },
-        { type: "separator" }, */
+        { type: "separator" },*/
         { role: "zoomIn" },
         { role: "zoomOut" },
         { role: "resetZoom" },

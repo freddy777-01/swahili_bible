@@ -31,6 +31,23 @@ const bible = (exports.bible = {
     });
     return titleNums;
   },
+  titleName: (titleNum) => {
+    let titleName, temp;
+    if (titleNum[0] == 0) {
+      //Filtering the title id
+      temp = titleNum[1];
+    } else {
+      temp = titleNum;
+    }
+    bible.titleNums().forEach((titlo) => {
+      if (titlo[0] > 0) {
+        if (Number(titlo[0] == Number(temp))) {
+          titleName = titlo[1];
+        }
+      }
+    });
+    return titleName;
+  },
   tafutaSura: (kt) => {
     let temp = [];
     let suraAr = [];
