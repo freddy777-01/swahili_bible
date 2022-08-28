@@ -1,8 +1,8 @@
 name: Build/release
 
 on: push
-	branches:
-		-rebuild#1
+branches:
+-rebuild#1
 
 jobs:
   release:
