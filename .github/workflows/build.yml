@@ -1,8 +1,9 @@
 name: Build/release
 
 on:
+ push:
+   branches: ["rebuild#1"]
  workflow_dispatch:
-branches:"rebuild#1"
 
 jobs:
   release:
