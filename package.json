@@ -10,6 +10,15 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
+    "package-by-builder": "npm run build && electron-builder build --publish never",
+    "package-all": "npm run build && electron-builder build -mwl",
+    "package-ci": "npm run postinstall && npm run build && electron-builder --publish always",
+    "package-linux": "npm run build && electron-builder build --linux",
+    "package-mac": "npm run build && electron-builder build --mac",
+    "package-win": "npm run build && electron-builder build --win --x64",
+    "publish-linux": "npm run postinstall && npm run build && electron-builder build --linux --publish always",
+    "publish-mac": "npm run postinstall && npm run build && electron-builder build --mac --publish always",
+    "publish-win": "npm run postinstall && npm run build && electron-builder build --win --x64 --publish always",
     "lint": "echo \"No linting configured\""
   },
   "keywords": [],
@@ -18,53 +27,63 @@
     "email": "58578902+freddy777-01@users.noreply.github.com"
   },
   "license": "MIT",
-  "config": {
-    "forge": {
-      "packagerConfig": {
-        "extecutableName": "Swahili Bible",
-        "overwrite": true,
-        "asar": false,
-        "icon": "src/icons/swahili_bible.png"
+  "build": {
+    "productName": "swahili_bible",
+    "appId": "com.femag.swahili_bible",
+    "copyright": " Copyright © year ${author.name}",
+    "files": [
+      "src/"
+    ],
+    "asar": false,
+    "artifactName": "${productName}.${ext}",
+    "mac": {
+      "entitlements": "./internals/build/entitlements.mac.plist",
+      "entitlementsInherit": "./internals/build/entitlements.mac.plist",
+      "extendInfo": {
+        "LSUIElement": 1
       },
-      "publishers": [
+      "gatekeeperAssess": false,
+      "hardenedRuntime": true,
+      "target": [
+        "dmg"
+      ]
+    },
+    "dmg": {
+      "contents": [
         {
-          "name": "@electron-forge/publisher-github",
-          "config": {
-            "repository": {
-              "owner": "freddy777-01",
-              "name": "swahili_bible"
-            },
-            "prerelease": false,
-            "draft": true
-          }
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
         }
       ],
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "Swahili_Bible",
-            "setupExe": "Swahili Bible.exe",
-            "setupIcon": "src/icons/swahili_bible.ico",
-            "author": "FEMAG",
-            "noMsi": false,
-            "setupMsi": "Swahili Bible"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin",
-            "linux"
-          ],
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        }
+      "sign": false
+    },
+    "win": {
+      "target": [
+        "nsis"
       ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "snap",
+        "deb",
+        "rpm",
+        "tar.gz"
+      ],
+      "category": "Utility"
     }
+  },
+  "publish": {
+    "provider": "github",
+    "owner": "freddy777-01",
+    "repo": "swahili_bible",
+    "private": false
   },
   "dependencies": {
     "better-sqlite3": "^7.6.2",
@@ -80,6 +99,7 @@
     "@electron-forge/maker-squirrel": "^6.0.0-beta.65",
     "@electron-forge/maker-zip": "^6.0.0-beta.65",
     "@electron-forge/publisher-github": "^6.0.0-beta.65",
-    "electron": "11.1.1"
+    "electron": "11.1.1",
+    "electron-builder": "^23.3.3"
   }
 }
