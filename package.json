@@ -1,7 +1,7 @@
 {
   "name": "swahili_bible",
   "productName": "swahili_bible",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Desktop SWAHILI BIBLE Application",
   "main": "src/index.js",
   "config.forge": "src/forge.config.js",
