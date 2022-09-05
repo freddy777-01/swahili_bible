@@ -4,87 +4,22 @@
   "version": "1.0.1",
   "description": "Desktop SWAHILI BIBLE Application",
   "main": "src/index.js",
-  "config.forge": "src/forge.config.js",
+  "Forge Config": "src/forge.config.js",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "package-by-builder": "npm run build && electron-builder build --publish never",
-    "package-all": "npm run build && electron-builder build -mwl",
-    "package-ci": "npm run postinstall && npm run build && electron-builder --publish always",
-    "package-linux": "npm run build && electron-builder build --linux",
-    "package-mac": "npm run build && electron-builder build --mac",
-    "package-win": "npm run build && electron-builder build --win --x64",
-    "publish-linux": "npm run postinstall && npm run build && electron-builder build --linux --publish always",
-    "publish-mac": "npm run postinstall && npm run build && electron-builder build --mac --publish always",
-    "publish-win": "npm run postinstall && npm run build && electron-builder build --win --x64 --publish always",
+    "make-win-64-bit":"electron-forge make --arch=x64",
+    "make-win-32-bit":"electron-forge make --arch=ia32",
     "lint": "echo \"No linting configured\""
   },
-  "keywords": [],
+  "keywords": ["education"],
   "author": {
     "name": "freddy777-01",
     "email": "58578902+freddy777-01@users.noreply.github.com"
   },
   "license": "MIT",
-  "build": {
-    "productName": "swahili_bible",
-    "appId": "com.femag.swahili_bible",
-    "copyright": " Copyright © year ${author.name}",
-    "files": [
-      "src/"
-    ],
-    "asar": false,
-    "artifactName": "${productName}.${ext}",
-    "mac": {
-      "entitlements": "./internals/build/entitlements.mac.plist",
-      "entitlementsInherit": "./internals/build/entitlements.mac.plist",
-      "extendInfo": {
-        "LSUIElement": 1
-      },
-      "gatekeeperAssess": false,
-      "hardenedRuntime": true,
-      "target": [
-        "dmg"
-      ]
-    },
-    "dmg": {
-      "contents": [
-        {
-          "x": 130,
-          "y": 220
-        },
-        {
-          "x": 410,
-          "y": 220,
-          "type": "link",
-          "path": "/Applications"
-        }
-      ],
-      "sign": false
-    },
-    "win": {
-      "target": [
-        "nsis"
-      ]
-    },
-    "linux": {
-      "target": [
-        "AppImage",
-        "snap",
-        "deb",
-        "rpm",
-        "tar.gz"
-      ],
-      "category": "Utility"
-    }
-  },
-  "publish": {
-    "provider": "github",
-    "owner": "freddy777-01",
-    "repo": "swahili_bible",
-    "private": false
-  },
   "dependencies": {
     "better-sqlite3": "^7.6.2",
     "edit-json-file": "^1.7.0",
@@ -99,7 +34,6 @@
     "@electron-forge/maker-squirrel": "^6.0.0-beta.65",
     "@electron-forge/maker-zip": "^6.0.0-beta.65",
     "@electron-forge/publisher-github": "^6.0.0-beta.65",
-    "electron": "11.1.1",
-    "electron-builder": "^23.3.3"
+    "electron": "11.1.1"
   }
 }
