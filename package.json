@@ -7,7 +7,7 @@
   "Forge Config": "src/forge.config.js",
   "scripts": {
     "start": "electron .",
-    "build":"electron-builder",
+    "build": "electron-builder",
     "package-by-builder": "npm run build && electron-builder build --publish never",
     "package-all": "npm run build && electron-builder build -mwl",
     "package-ci": "npm run postinstall && npm run build && electron-builder --publish always",
@@ -19,6 +19,7 @@
     "publish-linux": "npm run postinstall && npm run build && electron-builder build --linux --publish always",
     "publish-mac": "npm run postinstall && npm run build && electron-builder build --mac --publish always",
     "publish-win": "npm run postinstall && npm run build && electron-builder build --win --x64 --publish always",
+     "postinstall": "patch-package && electron-builder install-app-deps",
     "release": "electron-builder",
     "lint": "echo \"No linting configured\""
   },
@@ -30,12 +31,12 @@
     "email": "58578902+freddy777-01@users.noreply.github.com"
   },
   "license": "MIT",
-    "build": {
+  "build": {
     "productName": "swahili_bible",
     "appId": "com.swahili_bible",
     "copyright": " Copyright © year ${author}",
     "asar": false,
-    "files":[
+    "files": [
       "**/*",
       "./node_modules/**/*",
       "./src/assets/css/bootstrap.min.css",
@@ -96,17 +97,17 @@
     },
     "win": {
       "target": "nsis",
-      "icon":"src\/icons\/swahili_bible.ico"
+      "icon": "src/icons/swahili_bible.ico"
     },
-      "nsis":{
-        "oneClick":true,
-        "installerIcon":"src\/icons\/swahili_bible.ico",
-        "uninstallerIcon":"src\/icons\/swahili_bible.ico",
-        "uninstallDisplayName":"${productName} ${version}",
-        "createDesktopShortcut":true,
-        "allowToChangeInstallationDirectory":false,
-        "deleteAppDataOnUninstall":true,
-        "shortcutName":"SWB"
+    "nsis": {
+      "oneClick": true,
+      "installerIcon": "src/icons/swahili_bible.ico",
+      "uninstallerIcon": "src/icons/swahili_bible.ico",
+      "uninstallDisplayName": "${productName} ${version}",
+      "createDesktopShortcut": true,
+      "allowToChangeInstallationDirectory": false,
+      "deleteAppDataOnUninstall": true,
+      "shortcutName": "SWB"
     },
     "linux": {
       "target": [
@@ -125,15 +126,18 @@
     "repo": "swahili_bible",
     "private": false
   },
-   "repository": {
+  "repository": {
     "type": "git",
     "url": "git@github.com:freddy777-01/swahili_bible.git"
   },
   "dependencies": {
     "better-sqlite3": "^7.6.2",
     "edit-json-file": "^1.7.0",
+    "electron-log": "^4.4.8",
     "electron-squirrel-startup": "^1.0.0",
+    "electron-updater": "^5.2.1",
     "jshint": "^2.13.1",
+    "patch-package": "^6.4.7",
     "update-electron-app": "^2.0.1"
   },
   "devDependencies": {

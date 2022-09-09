@@ -1,5 +1,7 @@
 const { app, BrowserWindow, Menu, ipcMain } = require("electron");
+const { autoUpdater } = require("electron-updater");
 const path = require("path");
+
 const isDev = process.env.NODE_ENV !== "production";
 
 // icon for the App
@@ -27,6 +29,14 @@ const locatePreload = (preloadFile) => {
 const IfInDev = () => {
 	let dev = !app.isPackaged ? true : false;
 	return dev;
+};
+
+// update function
+const checkForUpdates = () => {
+	const log = require("electron-log");
+	log.transports.file.level = "debug";
+	autoUpdater.logger = log;
+	autoUpdater.checkForUpdatesAndNotify();
 };
 // console.log(app.isPackaged);
 console.log(app.getAppPath());
@@ -107,6 +117,11 @@ app.whenReady().then(() => {
 			mainWindow.close();
 		}, 1000);
 	});
+
+	// checking for updates
+	if (!IfInDev()) {
+		checkForUpdates();
+	}
 });
 
 // Creating Menu
