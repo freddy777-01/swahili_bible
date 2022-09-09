@@ -19,6 +19,7 @@
     "publish-linux": "npm run postinstall && npm run build && electron-builder build --linux --publish always",
     "publish-mac": "npm run postinstall && npm run build && electron-builder build --mac --publish always",
     "publish-win": "npm run postinstall && npm run build && electron-builder build --win --x64 --publish always",
+    "release": "electron-builder",
     "lint": "echo \"No linting configured\""
   },
   "keywords": [
@@ -123,6 +124,10 @@
     "owner": "freddy777-01",
     "repo": "swahili_bible",
     "private": false
+  },
+   "repository": {
+    "type": "git",
+    "url": "git@github.com:freddy777-01/swahili_bible.git"
   },
   "dependencies": {
     "better-sqlite3": "^7.6.2",
