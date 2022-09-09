@@ -1,12 +1,8 @@
 const { app, BrowserWindow, Menu, ipcMain } = require("electron");
 const path = require("path");
+const isDev = process.env.NODE_ENV !== "production";
 
-if (require("electron-squirrel-startup")) return app.quit();
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
-// app.on('ready',createWindow);
-// icont for the App
+// icon for the App
 let icoPath = path.join(__dirname, "icons/swahili_bible.ico");
 const getIcon = () => {
 	if ((process.platform = "win32")) {
@@ -15,7 +11,25 @@ const getIcon = () => {
 		return path.join(__dirname, "/icons/swahili_bible.png");
 	}
 };
-// console.log(__dirname);
+const locatePreload = (preloadFile) => {
+	return !app.isPackaged
+		? path.join(__dirname, preloadFile)
+		: path.resolve(app.getAppPath(), "src/" + preloadFile);
+	/* 	if (isDev) {
+		return path.join(app.getAppPath(), "src/" + preloadFile);
+	} else {
+		return path.resolve(
+			app.getAppPath(),
+			"../app.asar.unpacked/src/" + preloadFile
+		);
+	} */
+};
+const IfInDev = () => {
+	let dev = !app.isPackaged ? true : false;
+	return dev;
+};
+// console.log(app.isPackaged);
+console.log(app.getAppPath());
 app.whenReady().then(() => {
 	const mainWindow = new BrowserWindow({
 		width: 800,
@@ -27,10 +41,11 @@ app.whenReady().then(() => {
 		webPreferences: {
 			nodeIntegration: false,
 			contextIsolation: true,
-			preload: path.join(__dirname, "preload.js"),
+			preload: locatePreload("preload.js"),
+			devTools: IfInDev(),
 		},
 	});
-
+	// path.join(__dirname, "preload-note-book.js");
 	const noteBook = new BrowserWindow({
 		width: 600,
 		height: 600,
@@ -42,7 +57,8 @@ app.whenReady().then(() => {
 		webPreferences: {
 			nodeIntegration: false,
 			contextIsolation: true,
-			preload: path.join(__dirname, "preload-note-book.js"),
+			preload: locatePreload("preload-note-book.js"),
+			devTools: IfInDev(),
 		},
 	});
 
@@ -60,6 +76,7 @@ app.whenReady().then(() => {
 		webPreferences: {
 			nodeIntegration: false,
 			contextIsolation: true,
+			devTools: IfInDev(),
 		},
 		// icon: getIcon(),
 	});
@@ -128,7 +145,7 @@ Menu.setApplicationMenu(
 				{ role: "resetZoom" },
 				{ role: "togglefullscreen" },
 				{ type: "separator" },
-				// {role: 'toggleDevTools'}
+				{ role: "toggleDevTools" },
 			],
 		},
 		{

@@ -1,0 +1,1 @@
+1> for windows the icon extetension should be ".ico", recommended size of electron-builder is "256 x 256"

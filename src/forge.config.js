@@ -3,7 +3,7 @@ module.exports = {
 		extecutableName: "Swahili Bible",
 		overwrite: true,
 		asar: false,
-		icon: "src\\icons\\swahili_bible.ico",
+		icon: "icons\\swahili_bible.ico",
 	},
 	publishers: {
 		name: "@electron-forge/publisher-github",
@@ -21,7 +21,7 @@ module.exports = {
 			config: {
 				name: "Swahili_Bible",
 				setupExe: "Swahili Bible.exe",
-				setupIcon: "src/icons/swahili_bible.ico",
+				setupIcon: "icons\\swahili_bible.ico",
 				author: "FEMAG",
 				noMsi: false,
 				setupMsi: "Swahili Bible",
