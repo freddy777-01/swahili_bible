@@ -172,7 +172,7 @@ Menu.setApplicationMenu(
 				{ role: "resetZoom" },
 				{ role: "togglefullscreen" },
 				{ type: "separator" },
-				{ role: app.isPackaged ? "toggleDevTools" : "" },
+				{ role: !app.isPackaged ? "toggleDevTools" : "" },
 			],
 		},
 		{

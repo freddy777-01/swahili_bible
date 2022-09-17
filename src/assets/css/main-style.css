@@ -40,7 +40,7 @@ z-index: 1;
 display: flex;
 flex-direction: row;
 justify-content: space-between;
-position: absolute;
+position: fixed;
 right: 6rem;
 top: 1rem;
 z-index: 1;
