@@ -13,7 +13,25 @@ const getIcon = () => {
 		return path.join(__dirname, "/icons/swahili_bible.png");
 	}
 };
+
+/**
+ * Here am using "app.isPackaged" to know if the app is in dev or prod mode, this approach is used instead of using
+ * the "process.env.NODE_ENV"
+ */
+const IfInDev = () => {
+	let dev = !app.isPackaged ? true : false;
+	return dev;
+};
 const locatePreload = (preloadFile) => {
+	/* 	if (app.isPackaged) {
+		if (preloadFile.localeCompare("preload-note-book.js") >= 0) {
+			return path.resolve(app.getAppPath(), "preload-note-book.min.js");
+		} else {
+			return path.resolve(app.getAppPath(), "preload.min.js");
+		}
+	} else {
+		return path.join(__dirname, preloadFile);
+	} */
 	return !app.isPackaged
 		? path.join(__dirname, preloadFile)
 		: path.resolve(app.getAppPath(), "src/" + preloadFile);
@@ -26,20 +44,9 @@ const locatePreload = (preloadFile) => {
 		);
 	} */
 };
-const IfInDev = () => {
-	let dev = !app.isPackaged ? true : false;
-	return dev;
-};
 
-// update function
-const checkForUpdates = () => {
-	const log = require("electron-log");
-	log.transports.file.level = "debug";
-	autoUpdater.logger = log;
-	autoUpdater.checkForUpdatesAndNotify();
-};
 // console.log(app.isPackaged);
-console.log(app.getAppPath());
+// console.log(app.getAppPath());
 app.whenReady().then(() => {
 	const mainWindow = new BrowserWindow({
 		width: 800,
@@ -52,7 +59,7 @@ app.whenReady().then(() => {
 			nodeIntegration: false,
 			contextIsolation: true,
 			preload: locatePreload("preload.js"),
-			devTools: IfInDev(),
+			// devTools: IfInDev(),
 		},
 	});
 	// path.join(__dirname, "preload-note-book.js");
@@ -68,7 +75,7 @@ app.whenReady().then(() => {
 			nodeIntegration: false,
 			contextIsolation: true,
 			preload: locatePreload("preload-note-book.js"),
-			devTools: IfInDev(),
+			// devTools: IfInDev(),
 		},
 	});
 
@@ -86,7 +93,7 @@ app.whenReady().then(() => {
 		webPreferences: {
 			nodeIntegration: false,
 			contextIsolation: true,
-			devTools: IfInDev(),
+			// devTools: IfInDev(),
 		},
 		// icon: getIcon(),
 	});
@@ -98,7 +105,7 @@ app.whenReady().then(() => {
 	mainWindow.once("ready-to-show", () => {
 		setTimeout(() => {
 			splashScreen.destroy();
-		}, 5000);
+		}, 2000);
 		mainWindow.show();
 	});
 
@@ -119,8 +126,13 @@ app.whenReady().then(() => {
 	});
 
 	// checking for updates
-	if (!IfInDev()) {
-		checkForUpdates();
+	if (app.isPackaged) {
+		(function () {
+			const log = require("electron-log");
+			log.transports.file.level = "debug";
+			autoUpdater.logger = log;
+			autoUpdater.checkForUpdatesAndNotify();
+		})();
 	}
 });
 
@@ -160,7 +172,7 @@ Menu.setApplicationMenu(
 				{ role: "resetZoom" },
 				{ role: "togglefullscreen" },
 				{ type: "separator" },
-				{ role: "toggleDevTools" },
+				{ role: app.isPackaged ? "toggleDevTools" : "" },
 			],
 		},
 		{
