@@ -1,5 +1,5 @@
 {
-  "name": "swahili_bible",
+  "name": "swahili-bible",
   "productName": "swahili_bible",
   "version": "1.0.1",
   "description": "Desktop SWAHILI BIBLE Application",
@@ -15,7 +15,7 @@
     "build-win-64": "electron-builder build --win --x64",
     "build-win-32": "electron-builder build --win --ia32",
     "build-win-all": "electron-builder build --win",
-    "publish-linux": "npm run postinstall && npm run build && electron-builder build --linux --publish always",
+    "publish-linux": "npm run postinstall && electron-builder build --linux --publish always",
     "publish-mac": "npm run postinstall && npm run build && electron-builder build --mac --publish always",
     "publish-win": "npm run postinstall && electron-builder build --win --ia32 --publish always",
     "postinstall": "patch-package && electron-builder install-app-deps",
@@ -34,7 +34,7 @@
     "productName": "swahili_bible",
     "appId": "com.swahili_bible",
     "copyright": " Copyright © year ${author}",
-    "asar":false,
+    "asar": false,
     "files": [
       "**/*",
       "./node_modules/**/*",
@@ -96,7 +96,9 @@
     "win": {
       "target": "nsis",
       "icon": "src/icons/swahili_bible.ico",
-      "publish":["github"]
+      "publish": [
+        "github"
+      ]
     },
     "nsis": {
       "oneClick": true,
@@ -116,13 +118,18 @@
         "rpm",
         "tar.gz"
       ],
-      "category": "Utility"
+      "category": "Education",
+      "icon": "src/icons/swahili_bible_linux.png",
+      "desktop": "swahili bible"
+    },
+    "snap": {
+      "title": "swahili-bible"
     },
     "publish": {
-        "provider":"github",
-        "repo": "swahili_bible",
-        "owner": "freddy777-01",
-        "private": false
+      "provider": "github",
+      "repo": "swahili_bible",
+      "owner": "freddy777-01",
+      "private": false
     }
   },
   "repository": {
