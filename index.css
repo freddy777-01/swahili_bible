@@ -1,0 +1,210 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root{
+    --radius: 10px;
+    --pink-color:rgb(255, 84, 226);
+    --pink-light-color:rgb(255, 158, 239);
+    --black-light-color:rgb(59, 59, 59);
+}
+
+a{
+    text-decoration: none;
+}
+.container{
+    padding-right: 10rem;
+    padding-left: 10rem ;
+}
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 2rem;
+}
+nav span{
+    display: none;
+}
+nav img{
+    width: 10rem;
+    /* border: 2px solid red; */
+}
+nav a{
+    align-self: flex-start;
+    background: var(--pink-color);
+    width: 11rem;
+    text-align: center;
+    font-size: 1.3rem;
+    padding: 1rem;
+    color: white;
+    border-radius: var(--radius);
+    transition: all .3s ease-in-out;
+    margin: auto 1px;
+}
+nav a:hover{
+    background: var(--pink-color);
+    color: var(--black-light-color);
+}
+section{
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+    text-align: center;
+    line-height: 2rem;
+}
+
+section header{
+    font-size: 2.5rem;
+    text-align: center;
+    color: var(--black-light-color);
+    font-weight: bolder;
+}
+section .disc-text{
+    margin-top: 1rem;
+    color: rgb(88, 88, 88);
+    font-size: 1.5rem;
+}
+section div a{
+    background: var(--pink-color);
+    border-radius: var(--radius);
+    padding: 4px;
+}
+
+.same-css{
+    display: flex;
+}
+.same-css img{
+    width: 45rem;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+}
+.same-css >div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+#download{
+     line-height: 4rem;
+    background: var(--pink-color);
+}
+#download header{
+    font-size: 2rem;
+}
+#download a{
+    background: white;
+    width: 11rem;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bolder;
+    padding: 1rem;
+    color: var(--black-light-color);
+    border-radius: var(--radius);
+    transition: all .3s ease-in-out;
+}
+#download a:hover{
+    background: var(--pink-light-color);
+}
+body{
+    overflow-x: hidden;
+}
+.circle-unfilled,.circle-filled{
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0.3;
+}
+.circle-unfilled{
+    top: 50%;
+    right: -10rem;
+    border: 10px solid var(--pink-color);
+    width: 85rem;
+    height: 85rem;
+    
+}
+.circle-filled{
+    background: var(--pink-color);
+     width: 79rem;
+    height: 79rem;
+    top: 55%;
+    right: -7rem;
+}
+.circle-unfilled-2{
+    top: 140rem;
+    left: -15rem;
+    width: 75rem;
+    height: 75rem;
+    
+}
+.circle-filled-2{
+     width: 69rem;
+    height: 69rem;
+    top: 143rem;
+    left: -11rem;
+}
+
+@media only screen and (max-width: 600px) {
+    body{
+        overflow-y:auto ;
+    }
+    .container{
+    padding-right: 2rem;
+    padding-left: 2rem ;
+}
+    nav{
+        gap: 5rem;
+        align-items: center;
+    }
+    nav img{
+    display: none;
+    width: 10rem;
+    /* border: 2px solid red; */
+}
+nav span{
+    display: block;
+    font-size: 1.7rem;
+    font-weight: bolder;
+    color: var(--black-light-color);
+}
+nav a{
+    width: 10rem;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 1rem;
+    border-radius: var(--radius);
+}
+section{
+    padding-top: 2rem;
+    line-height: 1.7rem;
+}
+section header{
+    font-size: 1.6rem;
+}
+section .disc-text{
+    margin-top: 1rem;
+    color: rgb(88, 88, 88);
+    font-size: 1.3rem;
+}
+section div >img{
+    width: 85vw;
+}
+.same-css{
+    flex-direction: column;
+}
+.same-css img{
+    width: 85vw;
+}
+.circle-unfilled-2{
+    top: 140rem;
+    left: -15rem;
+    width: 45rem;
+    height: 45rem;
+    
+}
+.circle-filled-2{
+     width: 41rem;
+    height: 41rem;
+    top: 142rem;
+    left: -13rem;
+}
+}
