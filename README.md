@@ -34,5 +34,5 @@ Swahili Bible Features:
  ![swb-splashscreen](https://github.com/freddy777-01/swahili_bible/blob/main/screenshots/notebook-read_notes.png)
  
  ## Installation
- `Note:` Currently the app is available for ***windows*** only
+ `Note:` Currently the app is available for ***windows*** operating system only
   * windows setup - [Download](https://github.com/freddy777-01/swahili_bible/releases/download/v1.0.1/swahili_bible.exe)
