@@ -7,7 +7,6 @@
   "Forge Config": "src/forge.config.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder",
     "package-by-builder": "npm run build && electron-builder build --publish never",
     "package-all": "npm run build && electron-builder build -mwl",
     "package-ci": "npm run postinstall && npm run build && electron-builder --publish always",
@@ -18,7 +17,7 @@
     "build-win-all": "electron-builder build --win",
     "publish-linux": "npm run postinstall && npm run build && electron-builder build --linux --publish always",
     "publish-mac": "npm run postinstall && npm run build && electron-builder build --mac --publish always",
-    "publish-win": "npm run postinstall && npm run build && electron-builder build --win --x64 --publish always",
+    "publish-win": "npm run postinstall && electron-builder build --win --ia32 --publish always",
     "postinstall": "patch-package && electron-builder install-app-deps",
     "release": "electron-builder",
     "lint": "echo \"No linting configured\""
@@ -43,7 +42,7 @@
       "./src/assets/fontawesome/css/all.min.css",
       "./src/assets/fontawesome/js/all.min.js",
       "./src/assets/js/jquery.min.js",
-      "./src/assets/js/animated.min.js",
+      "./src/assets/js/animated.js",
       "./src/assets/js/bootstrap.bundle.min.js",
       "./src/assets/css/main-style.min.css",
       "./src/assets/css/note-book-style.min.css",
@@ -54,16 +53,16 @@
       "./src/db/notes.db",
       "./src/scripture/SwaBible.txt",
       "./src/titles/Swahili.txt",
-      "./src/bibleQuery.min.js",
-      "./src/db.min.js",
-      "./src/dbQuery.min.js",
+      "./src/bibleQuery.js",
+      "./src/db.js",
+      "./src/dbQuery.js",
       "./src/index.html",
-      "./src/index.min.js",
+      "./src/index.js",
       "./src/noteBook.html",
-      "./src/preload-note-book.min.js",
-      "./src/preload.min.js",
-      "./src/renderer-note-book.min.js",
-      "./src/render.min.js",
+      "./src/preload-note-book.js",
+      "./src/preload.js",
+      "./src/renderer-note-book.js",
+      "./src/render.js",
       "./src/splash-screen.html"
     ],
     "artifactName": "${productName}.${ext}",
@@ -96,7 +95,8 @@
     },
     "win": {
       "target": "nsis",
-      "icon": "src/icons/swahili_bible.ico"
+      "icon": "src/icons/swahili_bible.ico",
+      "publish":["github"]
     },
     "nsis": {
       "oneClick": true,
@@ -117,13 +117,13 @@
         "tar.gz"
       ],
       "category": "Utility"
+    },
+    "publish": {
+        "provider":"github",
+        "repo": "swahili_bible",
+        "owner": "freddy777-01",
+        "private": false
     }
-  },
-  "publish": {
-    "provider": "github",
-    "owner": "freddy777-01",
-    "repo": "swahili_bible",
-    "private": false
   },
   "repository": {
     "type": "git",
