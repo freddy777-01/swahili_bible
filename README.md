@@ -1,5 +1,5 @@
 # Swahili Bible, Desktop App
-> If you want to get involved please contact me ✌
+> Want to get involved ?, contact me ✌
 
 Swahili Bible Features:
  * Bookmarking.
@@ -35,4 +35,4 @@ Swahili Bible Features:
  
  ## Installation
  `Note:` Currently the app is available for ***windows*** only
-  * windows setup - [download]()
+  * windows setup - [Download](https://github.com/freddy777-01/swahili_bible/releases/download/v1.0.1/swahili_bible.exe)
