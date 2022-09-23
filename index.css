@@ -101,13 +101,58 @@ section div a{
     color: var(--black-light-color);
     border-radius: var(--radius);
     transition: all .3s ease-in-out;
+    position: relative;
+}
+#download a .highlight{
+    background: var(--black-light-color);
+    color: white;
+    border-radius: var(--radius);
+    padding: 9px;
+    font-size: 11px;
+}
+#download a .highlight:hover{
+    color: black;
+    background: white;
 }
 #download a:hover{
     background: var(--pink-light-color);
 }
+.tooltip{
+  visibility: hidden;
+  width: 6rem;
+  height: auto;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 3.3rem;
+  left: 57%;
+  opacity: 0;
+  font-size: 11px;
+  transition: opacity 0.3s;
+}
+.tooltip::after{
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+#download a:hover .tooltip{
+    visibility: visible;
+    opacity: 1;
+}
 body{
     overflow-x: hidden;
 }
+
+/* circles css */
 .circle-unfilled,.circle-filled{
     position: absolute;
     border-radius: 50%;
@@ -142,6 +187,20 @@ body{
     top: 143rem;
     left: -11rem;
 }
+.circle-unfilled-3{
+    top: -60rem;
+    left: 1rem;
+    width: 70rem;
+    height: 70rem;
+    
+}
+.circle-filled-3{
+     width: 65rem;
+    height: 65rem;
+    top: -58rem;
+    left: 3rem;
+}
+/* End circles CSS */
 
 @media only screen and (max-width: 600px) {
     body{
@@ -206,5 +265,29 @@ section div >img{
     height: 41rem;
     top: 142rem;
     left: -13rem;
+}
+.circle-unfilled-3{
+    top: -50rem;
+    left: 10rem;
+    
+}
+.circle-filled-3{
+    top: -48rem;
+    left: 11rem;
+}
+#download{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.7rem;
+    padding: 0px 10px 0px 10px;
+}
+#download a{
+    width: 100%;
+    padding: 0px;
+}
+#download header{
+    font-size: 1.5rem;
+    line-height: 2rem;
 }
 }
