@@ -37,5 +37,5 @@ Swahili Bible Features:
  `Note:` Currently the app is available for ***windows*** and ***Linux*** operating system only
   * windows setup - [Download](https://github.com/freddy777-01/swahili_bible/releases/download/v1.0.1/swahili_bible.exe)
   * Linux `deb` setup - [Download](https://github.com/freddy777-01/swahili_bible/releases/download/v1.0.1/swahili_bible.deb)
-  * Linux (Ubuntu) `snap` setup - `sudo snap install swahili-bible`
+  * Linux (Ubuntu) `snap` - ```sudo snap install swahili-bible```
   * Linux `zip` - [Download](https://github.com/freddy777-01/swahili_bible/releases/download/v1.0.1/swahili_bible.tar.gz)
