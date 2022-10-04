@@ -1,5 +1,5 @@
 # Swahili Bible, Desktop App
-![](https://img.shields.io/github/downloads/freddy777-01/swahili_bible/total?logo=github&style=social)
+![](https://img.shields.io/github/downloads/freddy777-01/swahili_bible/total?logoColor=%23ff54e2&style=social)
 
 > Want to get involved ?, contact me ✌
 
