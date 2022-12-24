@@ -7,7 +7,7 @@ const hideWin = () => {
 };
 
 // Text Editor
-var TextEditor = new Quill("#snow-container", {
+let TextEditor = new Quill("#snow-container", {
 	modules: {
 		toolbar: [
 			[
@@ -49,7 +49,7 @@ var TextEditor = new Quill("#snow-container", {
 	theme: "snow",
 });
 
-var NoteReader = new Quill("#read-body", {
+let NoteReader = new Quill("#read-body", {
 	placeholder: "",
 	theme: "bubble",
 });

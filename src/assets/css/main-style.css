@@ -152,6 +152,9 @@ padding: 0.4rem;
 .modial .modal-header button:hover{
   font-weight: 600;
 }
+#contact-modal #external-link{
+    cursor: pointer;
+}
 /* Animation for Modal */
 @keyframes animatetop {
   from {top: -300px; opacity: 0}

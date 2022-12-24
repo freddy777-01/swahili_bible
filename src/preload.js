@@ -1,4 +1,4 @@
-const { ipcRenderer, contextBridge } = require("electron");
+const { ipcRenderer, contextBridge, shell } = require("electron");
 const { bible } = require("./bibleQuery");
 const { highlighter, bookmarking } = require("./dbQuery");
 /*
@@ -37,4 +37,8 @@ contextBridge.exposeInMainWorld("bookmark", {
 	addbkmk: (bkmk) => bookmarking.addBkmk(bkmk),
 	getbkmks: () => bookmarking.getBkmks(),
 	deletebkmk: (id) => bookmarking.deleteBkmk(id),
+});
+
+contextBridge.exposeInMainWorld("openLink", {
+	open: (link) => shell.openExternal(link),
 });
