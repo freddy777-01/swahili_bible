@@ -75,7 +75,7 @@ app.whenReady().then(() => {
 			nodeIntegration: false,
 			contextIsolation: true,
 			preload: locatePreload("preload-note-book.js"),
-			// devTools: IfInDev(),
+			// devTools: true,
 		},
 	});
 
@@ -164,9 +164,11 @@ Menu.setApplicationMenu(
 		{
 			label: "View",
 			submenu: [
-				/*{ role: "reload" },
-        { role: "forceReload" },
-        { type: "separator" },*/
+				// To be commented
+				/* { role: "reload" },
+				{ role: "forceReload" },
+				{ type: "separator" }, */
+				// End of to be commented
 				{ role: "zoomIn" },
 				{ role: "zoomOut" },
 				{ role: "resetZoom" },
