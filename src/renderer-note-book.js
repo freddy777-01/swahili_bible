@@ -45,7 +45,7 @@ let TextEditor = new Quill("#snow-container", {
 			["clean"],
 		],
 	},
-	placeholder: "Compose an your Text...",
+	placeholder: "Compose an your Note...",
 	theme: "snow",
 });
 
@@ -82,7 +82,6 @@ const getAllNotes = () => {
 			`
               <div class="note-view border rounded mt-1 mb-1 p-1">
               <h4>${note.title}</h4>
-              <p class="noteBg">${note.notes}</p>
               <small><i>${note.created_at}</i></small>
               <div class="note-view-footer">
               <button class="btn btn-sm btn-outline-info read-note" data-id="${note.id}">Read</button>
@@ -104,9 +103,9 @@ $(document).on("click", ".read-note", (e) => {
     ${notes.readNote(e.target.dataset.id)[0].title}
     `
 	);
-	NoteReader.setContents([
-		JSON.parse(notes.readNote(e.target.dataset.id)[0].notes),
-	]);
+	NoteReader.setContents(
+		JSON.parse(notes.readNote(e.target.dataset.id)[0].notes)
+	);
 	showPanel(2);
 });
 

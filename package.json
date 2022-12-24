@@ -137,6 +137,7 @@
     "url": "git@github.com:freddy777-01/swahili_bible.git"
   },
   "dependencies": {
+    "@editorjs/editorjs": "^2.25.0",
     "better-sqlite3": "^7.6.2",
     "edit-json-file": "^1.7.0",
     "electron-log": "^4.4.8",
