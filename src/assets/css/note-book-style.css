@@ -66,7 +66,7 @@ padding: 0.4rem;
 .note .note-body .panel{
     display: none;
   }
-  .note .take-note textarea {
+ /*  .note .take-note textarea {
     max-width: 50rem;
     max-height: 24rem;
     min-width: 25rem;
@@ -74,6 +74,13 @@ padding: 0.4rem;
     padding: 5px;
     resize: both;
     border-radius: 5px;
+  } */
+  #editor-container{
+     margin: 50px auto;
+    max-width: 720px;
+  }
+  #snow-container{
+    height: 350px;
   }
   .take-note ::placeholder{
     color: rgb(255, 43, 255);
@@ -88,7 +95,7 @@ padding: 0.4rem;
     border-bottom: 1px;
     border-bottom-style: groove;
   }
-  .note .note-body .read-notes .read-body{
+  .note .note-body .read-notes #read-body{
     /* background-color: rgb(221, 221, 221); */
     border: 1px solid rgb(80, 80, 80);
     border-radius: 5px;

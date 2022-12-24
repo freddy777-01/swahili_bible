@@ -2,6 +2,7 @@ const { ipcRenderer, contextBridge } = require("electron");
 // import { notes } from "./dbQuery";
 const { notes } = require("./dbQuery");
 const editJsonFile = require("edit-json-file");
+const { EditorJS } = require("@editorjs/editorjs");
 let file = editJsonFile(`${__dirname}/settings/setting.json`, {
 	autosave: true,
 });
@@ -12,6 +13,7 @@ file.save();
 
 contextBridge.exposeInMainWorld("win", {
 	hide: () => ipcRenderer.send("win-status", { show: false }),
+	// editor: () => EditorJS,
 });
 // notes.notes.getNotes()
 contextBridge.exposeInMainWorld("notes", {
