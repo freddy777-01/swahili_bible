@@ -4,10 +4,10 @@ module.exports = {
   theme: {
     colors: {
       'black-soft': '#222222',
-      'gray-1': '#D9D9D9'
+      'gray-1': '#D9D9D9',
+      'white-smoke': '#f1f1f1'
     },
     extend: {}
   },
   plugins: []
 }
-

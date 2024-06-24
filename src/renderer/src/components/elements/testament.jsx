@@ -1,7 +1,6 @@
-import TestamentBook from './testamentBook'
 /* eslint-disable react/prop-types */
-const Testament = ({ testamentName, testamentTitles, getBookNumber }) => {
-  // eslint-disable-next-line react/prop-types
+import TestamentBook from './testamentBook'
+const Testament = ({ testamentName, testamentTitles, getBookOrigin, testament }) => {
   return (
     <div className="border border-gray-1 rounded-md">
       <div className="border-b border-b-gray-1 text-center p-1">{testamentName}</div>
@@ -11,7 +10,8 @@ const Testament = ({ testamentName, testamentTitles, getBookNumber }) => {
             key={key}
             bookNumber={book.book_number}
             bookName={book.book_name}
-            getBookNumber={getBookNumber}
+            getBookOrigin={getBookOrigin}
+            testament={testament}
           />
         ))}
       </div>

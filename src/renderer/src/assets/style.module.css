@@ -8,6 +8,13 @@
     border: 0.6px solid var(--color-bg-light);
   }
   transition: background-color 0.5s ease-in-out;
+  & select {
+    background-color: #363636;
+    transition: none;
+    option {
+      background-color: transparent;
+    }
+  }
 }
 .lightTheme {
   color: #363636;
@@ -16,4 +23,10 @@
     background-color: var(--color-bg-light);
   }
   transition: background-color 0.5s ease-in-out;
+  & select {
+    background-color: #f1f1f1;
+    option {
+      background-color: transparent;
+    }
+  }
 }

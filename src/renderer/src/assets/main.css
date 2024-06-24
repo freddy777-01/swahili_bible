@@ -24,9 +24,28 @@ body {
   height: 16.8rem;
   /* display: none; */
 }
-.scroll-bar::-webkit-scrollbar-track {
-  background: #333;
+.verses {
+  /* height: 100%; */
+  /* bottom: 0px; */
+  /* display: none; */
 }
+
+/* Customizing scroll bar */
+/* width */
+.scroll-bar::-webkit-scrollbar {
+  width: 10px;
+}
+.scroll-bar::-webkit-scrollbar-track {
+  background: var(--color-bg-light);
+  border-radius: 13px;
+}
+
+/* Handle */
+.scroll-bar::-webkit-scrollbar-thumb {
+  background: var(--color-black-soft);
+  border-radius: 10px;
+}
+/* End Customizing scroll bar */
 
 #light-mode {
   color: var(--color-text-light);
@@ -206,6 +225,10 @@ code {
 @media (max-height: 600px) {
   .testament {
     height: 13.7rem;
+    /* display: none; */
+  }
+  .verses {
+    /* height: 33.6rem; */
     /* display: none; */
   }
 }
