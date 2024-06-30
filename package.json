@@ -25,6 +25,7 @@
     "electron-updater": "^6.1.7",
     "quill": "^2.0.2",
     "react-icons": "^5.2.1",
+    "react-quill": "^2.0.0",
     "react-select": "^5.8.0",
     "react-tooltip": "^5.27.0"
   },

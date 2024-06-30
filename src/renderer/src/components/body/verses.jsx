@@ -4,6 +4,7 @@ import ThemeContext from '../../utilities/theme-context'
 import { BibleCache } from '../../utilities/bible-cache-provider'
 import Chapters from '../elements/chapters'
 import Verse from '../elements/verse'
+import NoteBook from './noteBook'
 const Verses = () => {
   const Theme = useContext(ThemeContext)
   const bibleCache = useContext(BibleCache)
@@ -22,8 +23,9 @@ const Verses = () => {
       </div>
 
       <div className="h-full overflow-y-scroll absolute pt-11 px-2 scroll-bar overflow-x-hidden">
-        {bibleCache.verses.length > 0 &&
-          bibleCache.verses.map((verse, key) => <Verse key={key} verse={verse} />)}
+        <NoteBook />
+        {/* {bibleCache.verses.length > 0 &&
+          bibleCache.verses.map((verse, key) => <Verse key={key} verse={verse} />)} */}
       </div>
     </div>
   )

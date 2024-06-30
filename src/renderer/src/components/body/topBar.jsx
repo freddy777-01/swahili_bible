@@ -13,7 +13,10 @@ export default function TopBar() {
   return (
     <div className="w-full flex flex-row justify-between border border-gray-1 rounded-md p-1">
       <div className="p-1 flex flex-row place-items-center">
-        <span className="p-1 rounded-full cursor-pointer" data-tooltip-id="about_tooltip">
+        <span
+          className={`p-1 rounded-full cursor-pointer about  ${Theme.isLight ? 'bg-gray-1' : 'border'} `}
+          data-tooltip-id="about_tooltip"
+        >
           <FaExclamation />
           <Tooltip id="about_tooltip" content="About" />
         </span>
