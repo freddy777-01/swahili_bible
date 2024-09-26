@@ -15,6 +15,9 @@
       background-color: transparent;
     }
   }
+  bold {
+    color: #d61818;
+  }
 }
 .lightTheme {
   color: #363636;

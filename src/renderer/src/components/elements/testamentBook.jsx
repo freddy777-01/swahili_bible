@@ -4,6 +4,7 @@ import ThemeContext from '../../utilities/theme-context'
 const TestamentBook = ({ bookNumber, bookName, getBookOrigin, testament }) => {
   const Theme = useContext(ThemeContext)
   //TODO : when title is clicked it has to have gray background color, as selected one
+  //TODO: add reaple click effect for a clicked title
 
   return (
     <div
