@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import Quill from 'quill'
-import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
 import ThemeContext from '../../utilities/theme-context'
 
 // Text Editor
@@ -9,27 +9,64 @@ import ThemeContext from '../../utilities/theme-context'
 
 const NoteBook = () => {
   const options = {
-    // debug: 'info',
     modules: {
-      toolbar: true
+      toolbar: [
+        [
+          {
+            font: []
+          }
+        ],
+        [
+          {
+            header: [1, 2, 3, false]
+          }
+        ],
+        ['bold', 'italic', 'underline'],
+        [
+          {
+            list: 'ordered'
+          },
+          {
+            list: 'bullet'
+          }
+        ],
+        [
+          {
+            color: []
+          },
+          {
+            background: []
+          }
+        ],
+        [
+          {
+            align: []
+          }
+        ],
+        ['clean']
+      ]
     },
-    placeholder: 'Compose an epic...',
+    placeholder: 'Compose an your Note...',
     theme: 'snow'
   }
-  const [value, setValue] = useState('')
+  /* const [value, setValue] = useState('')
   const Theme = useContext(ThemeContext)
   const [range, setRange] = useState()
   const [lastChange, setLastChange] = useState()
-  const [readOnly, setReadOnly] = useState(false)
+  const [readOnly, setReadOnly] = useState(false) */
 
   useEffect(() => {
-    const quill = new Quill('#editor', options)
+    new Quill('#editor', options)
+    /* const load = async () => {
+      ;(await import('quill/dist/quill.snow.css')).default
+    }
+    load().then(() => ) */
   }, [])
   // Use a ref to access the quill instance directly
   // const quillRef = useRef()
 
   return (
-    <div className="w-96">
+    <div className="w-[50rem]">
       <div id="editor"></div>
     </div>
   )
