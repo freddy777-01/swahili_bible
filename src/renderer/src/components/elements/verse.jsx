@@ -11,7 +11,7 @@ const Verse = ({ verse }) => {
     >
       <div className="italic mx-1">{verse.verse_number}</div>
       <div className="mx-3">{verse.verse_text}</div>
-      <div className="mx-1 hover:cursor-pointer scale-90 highlight_tooltip  p-2">
+      <div className="mx-1 hover:cursor-pointer scale-90 highlight_tooltip text-slate-400 p-2">
         <FaHighlighter />
         <Tooltip anchorSelect=".highlight_tooltip" content="Highlight" place="left" />
       </div>

@@ -7,9 +7,11 @@ import { IoSunny } from 'react-icons/io5'
 import { BsFillMoonStarsFill } from 'react-icons/bs'
 import ThemeContext from '../../utilities/theme-context'
 import { Tooltip } from 'react-tooltip'
+import { SidebarContext } from '../../utilities/sidbar-context'
 
 export default function TopBar() {
   const Theme = useContext(ThemeContext)
+  const ReadViewSwitch = useContext(SidebarContext)
   return (
     <div className="w-full flex flex-row justify-between border border-gray-1 rounded-md p-1">
       <div className="p-1 flex flex-row place-items-center">
@@ -32,6 +34,7 @@ export default function TopBar() {
         <div
           data-tooltip-id="notes_tooltip"
           className={`w-9 text-center flex justify-center place-items-center cursor-pointer rounded-md hover:shadow-md ${!Theme.isLight ? 'hover:shadow-gray-1' : ''}`}
+          onClick={() => ReadViewSwitch.setReadView(!ReadViewSwitch.isReadView)}
         >
           <TfiWrite />
           <Tooltip id="notes_tooltip" content="Take and Read Notes" place="left" />

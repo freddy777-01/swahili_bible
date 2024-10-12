@@ -30,20 +30,20 @@ const NoteBook = () => {
             list: 'bullet'
           }
         ],
-        [
+        /* [
           {
             color: []
           },
           {
             background: []
           }
-        ],
+        ], */
         [
           {
             align: []
           }
-        ],
-        ['clean']
+        ]
+        // ['clean']
       ]
     },
     placeholder: 'Compose an your Note...',
@@ -66,8 +66,17 @@ const NoteBook = () => {
   // const quillRef = useRef()
 
   return (
-    <div className="w-[50rem]">
-      <div id="editor"></div>
+    <div className="rounded-md  w-[30rem] h-screen  grid grid-rows-2">
+      <div className=" m-1 text-center">
+        <div className="p-2 rounded-md bg-gray-1 hover:cursor-pointer w-20 text-center h-10">
+          Notes
+        </div>
+        <div className="p-2 rounded-md bg-gray-1 hover:cursor-pointer w-20 text-center h-10">
+          Write
+        </div>
+      </div>
+      <div id="editor" className="border-1 border-red-200 overflow-auto"></div>
+      <div>Save</div>
     </div>
   )
 }

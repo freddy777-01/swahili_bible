@@ -18,6 +18,9 @@
   bold {
     color: #d61818;
   }
+  & button {
+    color: #f1f1f1;
+  }
 }
 .lightTheme {
   color: #363636;

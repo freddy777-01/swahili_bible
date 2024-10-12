@@ -21,7 +21,7 @@ const Chapters = () => {
 
   return (
     <select
-      onChange={(chapter) => bibleCache.setChapterNumber(chapter.value)}
+      onChange={(e) => bibleCache.setChapterNumber(e.target.value)}
       className="focus:outline-none ring-slate-400 p-2"
     >
       {bibleCache.chapters.map((value, index) => (

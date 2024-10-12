@@ -6,6 +6,7 @@ export default function Main() {
 
   // useEffect(()=>{}[verses])
   // console.log(t)
+
   return (
     <div id="main" className="flex flex-row items-stretch  pt-2 ">
       <SideNav />
