@@ -7,6 +7,9 @@ body {
   background-color: var(--color-background-mute);
   /* padding: 0rem; */
 }
+#root {
+  height: 100vh;
+}
 #app {
   height: 100%;
   -webkit-user-select: none; /* Safari */
@@ -95,8 +98,8 @@ code {
 }
 
 .ql-editor {
-  height: 250px;
-  max-height: 250px;
+  /* height: 250px; */
+  max-height: 29.2rem;
   overflow: auto;
 }
 

@@ -9,9 +9,9 @@ import ThemeProvider from './utilities/theme-provider'
 //TODO => put bible file and display on user interface
 //TODO => look on data persistent or use sqlite.
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <ThemeProvider>
-      <App />
-    </ThemeProvider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <ThemeProvider>
+    <App />
+  </ThemeProvider>
+  // </React.StrictMode>
 )

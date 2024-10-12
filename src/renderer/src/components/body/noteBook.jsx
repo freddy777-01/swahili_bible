@@ -66,17 +66,21 @@ const NoteBook = () => {
   // const quillRef = useRef()
 
   return (
-    <div className="rounded-md  w-[30rem] h-screen  grid grid-rows-2">
-      <div className=" m-1 text-center">
-        <div className="p-2 rounded-md bg-gray-1 hover:cursor-pointer w-20 text-center h-10">
+    <div className="rounded-md  w-[30rem] h-[90vh] relative border">
+      <div className=" m-1 text-center flex justify-around">
+        <div className="p-2 rounded-md bg-gray-1 hover:cursor-pointer w-28 text-center h-10">
           Notes
         </div>
-        <div className="p-2 rounded-md bg-gray-1 hover:cursor-pointer w-20 text-center h-10">
+        <div className="p-2 rounded-md bg-gray-1 hover:cursor-pointer w-28 text-center h-10">
           Write
         </div>
       </div>
-      <div id="editor" className="border-1 border-red-200 overflow-auto"></div>
-      <div>Save</div>
+      <div className="border-1 border-red-200 overflow-auto mb-3">
+        <div id="editor"></div>
+      </div>
+      <div className="absolute bottom-5 right-5 hover:cursor-pointer bg-gray-1 p-1 rounded-md w-20 text-center font-bold">
+        Save
+      </div>
     </div>
   )
 }

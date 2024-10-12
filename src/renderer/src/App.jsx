@@ -10,7 +10,7 @@ function App() {
   return (
     <BibleCacheProvider>
       <SidebarProvider>
-        <div id="app" className={`h-full w-full p-2 ${Theme.theme}`}>
+        <div id="app" className={`h-screen w-full p-2 ${Theme.theme}`}>
           <TopBar />
           <Main />
         </div>
